@@ -1,97 +1,77 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DIVERGIFY</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="brand-container">
-        <a href="/" class="wordmark">DIVERGIFY</a>
-      </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Divergify</title>
+  <meta name="theme-color" content="#1B2559" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/global.css" />
+  
+</head>
+<body>
+  <div data-partial="header"></div>
 
-      <nav class="main-nav" aria-label="Primary">
-        <ul>
-          <li><a href="#hub">The Hub</a></li>
-          <li><a href="#field-notes">Field Notes</a></li>
-          <li><a href="#dopamine-depot">Dopamine Depot</a></li>
-          <li><a href="#divergipedia">Divergipedia</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <main id="main" class="page-shell">
+    <section class="hero">
+  <div>
+    <div class="hero-tag">LOW INTERFERENCE BY DEFAULT</div>
+    <h1 class="hero-title">For brains that <span class="highlight">zig</span> when the world zags.</h1>
 
-      <div class="toggle-container">
-        <button id="btn-interference" aria-pressed="false" aria-label="Toggle Reduced Interference Mode">
-          <span class="icon" aria-hidden="true">👁️</span>
-          <span class="label">Low Stim</span>
-        </button>
+    <p class="text-muted">
+      Divergify is built for people whose minds move fast, scan constantly, and refuse to stay inside neat little boxes.
+      When a system is rigid, it does not make you stronger. It makes you spend your intelligence on surviving the system.
+      We build the opposite: structure that respects cognition, protects the nervous system, and turns intention into motion.
+    </p>
 
-        <button id="btn-tinfoil" aria-pressed="false" aria-label="Activate Tin Foil Hat Mode">
-          <span class="icon" aria-hidden="true">🛡️</span>
-          <span class="label">Secure</span>
-        </button>
-      </div>
-    </header>
+    <p class="text-muted">
+      The psychology is not mysterious. People avoid tasks when the task feels unsafe, vague, socially risky, or too big to hold.
+      So we lower ambiguity, reduce friction, and create clear exit ramps. You do not need to be fixed. You need a plan that matches reality.
+    </p>
 
-    <main>
-      <section id="hub" class="hero-section">
-        <div class="hero-content">
-          <div class="takota-container">
-            <div class="speech-bubble" id="takota-speech">
-              Hi, I'm Takota. Where is your brain at right now?
-            </div>
+    <p class="text-muted">
+      The brand is “Divergified.” That means professional, calm, and well researched, with a controlled streak of humor that signals
+      you are not alone. Easter eggs are deliberate. Nothing screams. Nothing manipulates. Consent is the feature.
+    </p>
 
-            <svg class="takota-avatar" viewBox="0 0 200 200" aria-hidden="true">
-              <circle cx="100" cy="100" r="90" fill="#102A43" stroke="#627D98" stroke-width="4"/>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;">
+      <a class="button button-primary" href="/hub.html">Enter The Hub</a>
+      <a class="button button-ghost" href="/divergipedia.html">Open Divergipedia</a>
+      <a class="button button-ghost" href="/app.html">App Build</a>
+    </div>
 
-              <g id="eyes-group">
-                <circle cx="70" cy="80" r="15" fill="#F0F4F8"/>
-                <rect id="lid-left" x="50" y="50" width="40" height="30" fill="#102A43" class="eyelid"/>
+    <div class="hr"></div>
 
-                <circle cx="130" cy="80" r="15" fill="#F0F4F8"/>
-                <rect id="lid-right" x="110" y="50" width="40" height="30" fill="#102A43" class="eyelid"/>
-              </g>
+    <p class="kicker">
+      If you feel stuck, that is not a moral failure. It is a signal. We treat signals like data, then we design around them.
+    </p>
+  </div>
 
-              <g id="needle-group" style="transform-origin: 100px 120px;">
-                <polygon points="100,100 90,140 100,180 110,140" fill="#27AB83"/>
-              </g>
-            </svg>
-          </div>
+  <aside class="panel">
+    <h3>What this is</h3>
+    <p class="text-muted">
+      A calm website, a behavior heavy system, and an app build that is meant to ship. The Hub organizes execution.
+      Divergipedia names patterns. Dopamine Depot supports the mission without turning you into the product.
+    </p>
 
-          <div class="weather-controls">
-            <h1 class="headline">Stop fighting your brain.</h1>
-            <p class="sub-headline">Divergify adapts to your energy, not the other way around.</p>
+    <p class="text-muted">
+      Two modes live in the header because reality changes. Shades reduces interference when your brain is overloaded.
+      Tin Foil Hat Mode exists because privacy should not require trust, it should require controls.
+    </p>
 
-            <div class="slider-container">
-              <label for="energy-slider" class="slider-label">My Energy Level:</label>
-              <input type="range" min="1" max="100" value="50" class="energy-slider" id="energy-slider" />
-              <div class="slider-labels" aria-hidden="true">
-                <span>Zombie</span>
-                <span>Okay-ish</span>
-                <span>Let's Go</span>
-              </div>
-            </div>
+    <div style="margin-top: 16px;">
+      <a class="button button-ghost" href="/dopamine-depot.html">Dopamine Depot</a>
+    </div>
+  </aside>
+</section>
 
-            <div class="cta-row">
-              <button class="btn-primary">Get the App</button>
-              <button class="btn-secondary" id="btn-what-taskache">What is 'Taskache'?</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="field-notes"><h2>Field Notes</h2></section>
-      <section id="dopamine-depot"><h2>Dopamine Depot</h2></section>
-      <section id="divergipedia"><h2>Divergipedia</h2></section>
-      <section id="contact"><h2>Contact</h2></section>
-    </main>
+  </main>
 
-    <div id="live" aria-live="polite" class="visually-hidden"></div>
+  <div data-partial="footer"></div>
 
-    <script src="assets/js/main.js" defer></script>
-  </body>
-  </html>
+  <script src="/assets/divergipedia-data.js"></script>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div class="footer-row">
+      <div class="footer-links">
+        <a href="https://www.instagram.com/divergify/" rel="noopener" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@divergify" rel="noopener" target="_blank">TikTok</a>
+        <a href="mailto:chaoscontrol@divergify.app">Email</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://ko-fi.com/" rel="noopener" target="_blank">Support</a>
+      </div>
+    </div>
+
+    <div class="easter-egg" data-easter-egg></div>
+
+    <div class="footer-small">
+      © <span id="year"></span> Divergify. All rights reserved. Divergify is a trademark of its owner. No medical or legal advice.
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var y = document.getElementById("year");
+      if (y) y.textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</footer>
