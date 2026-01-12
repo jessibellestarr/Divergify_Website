@@ -22,13 +22,43 @@
     <h1>Contact</h1>
 
 <p class="text-muted">
-  If you are reaching out about partnerships, press, early access, or anything that involves building something real, use the email below.
+  If you are reaching out about partnerships, press, early access, or anything that involves building something real, send it here.
   If you are trying to sell us “growth hacks,” save it for someone who still believes in productivity theater.
 </p>
 
 <div class="card" style="margin-top: 20px;">
-  <h3>Email</h3>
-  <p class="text-muted"><a href="mailto:chaoscontrol@divergify.app">chaoscontrol@divergify.app</a></p>
+  <h3>Send a message</h3>
+  <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact" />
+    <p style="display:none;">
+      <label>
+        Leave this field blank
+        <input name="bot-field" />
+      </label>
+    </p>
+    <label>
+      Name
+      <input type="text" name="name" required />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required />
+    </label>
+    <label>
+      Message
+      <textarea name="message" rows="6" required></textarea>
+    </label>
+    <label>
+      <input type="checkbox" name="marketing_opt_in" value="yes" />
+      Optional: send me product updates and research invites. Replies to this message are separate.
+    </label>
+    <p class="text-muted" style="margin: 8px 0 0;">
+      We only send updates if you opt in. Otherwise, this is just a reply channel.
+    </p>
+    <div style="margin-top: 16px;">
+      <button class="button button-primary" type="submit">Send message</button>
+    </div>
+  </form>
 </div>
 
   </main>

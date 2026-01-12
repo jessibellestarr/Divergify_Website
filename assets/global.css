@@ -5,10 +5,10 @@
 
 :root {
   /* Brand core */
-  --color-brand-navy: #1B2559;
-  --color-muted-blue: #5B8FA8;
-  --color-soft-lime: #8FAF8A;
-  --color-action-green: #6FAE86;
+  --color-brand-navy: #0B1F2A;
+  --color-muted-blue: #6E9ACB;
+  --color-soft-lime: #39E75F;
+  --color-action-green: #39E75F;
 
   /* Surfaces */
   --color-bg: var(--color-brand-navy);
@@ -251,7 +251,7 @@ p { margin: 0 0 var(--space-4); }
   background: #FFFFFF;
   transition: transform var(--anim-fast) ease;
 }
-.switch[data-on="true"] { background: rgba(143,175,138,0.35); }
+.switch[data-on="true"] { background: rgba(57,231,95,0.35); }
 .switch[data-on="true"]::after { transform: translateX(18px); }
 
 /* Hero ---------------------------------------------------- */
@@ -384,7 +384,7 @@ p { margin: 0 0 var(--space-4); }
   text-decoration: none;
 }
 .dp-index a.active {
-  background: rgba(143,175,138,0.18);
+  background: rgba(57,231,95,0.18);
   border-color: var(--color-border);
   color: var(--color-text);
 }
