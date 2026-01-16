@@ -1,2 +1,32 @@
 [build]
   publish = "."
+
+[[redirects]]
+  from = "/field-notes"
+  to = "/field-notes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/field-notes/living-slightly-out-of-sync.html"
+  to = "/field-notes/living-slightly-out-of-sync/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/field-notes/:slug"
+  to = "/field-notes/:slug/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/field-notes/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/field-notes/:splat"
+  status = 301
+  force = true
