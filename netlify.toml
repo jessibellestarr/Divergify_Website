@@ -17,7 +17,6 @@
   from = "/field-notes/:slug"
   to = "/field-notes/:slug/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/blog"
