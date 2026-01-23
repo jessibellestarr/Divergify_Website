@@ -5,10 +5,10 @@
 
 :root {
   /* Brand core */
-  --color-brand-navy: #0B1F2A;
-  --color-muted-blue: #6E9ACB;
-  --color-soft-lime: #39E75F;
-  --color-action-green: #39E75F;
+  --color-brand-navy: #232147;
+  --color-muted-blue: #918FA2;
+  --color-soft-lime: #CDA977;
+  --color-action-green: #CDA977;
 
   /* Surfaces */
   --color-bg: var(--color-brand-navy);
@@ -16,9 +16,14 @@
   --color-surface-strong: rgba(255,255,255,0.10);
 
   /* Text */
-  --color-text: #FFFFFF;
-  --color-text-muted: #D7E1EC;
+  --color-text: #F9EED2;
+  --color-text-muted: #918FA2;
   --color-link: var(--color-muted-blue);
+
+  /* Accents */
+  --color-tag-bg: rgba(145,143,162,0.18);
+  --color-active-bg: rgba(205,169,119,0.18);
+  --color-switch-on: rgba(205,169,119,0.35);
 
   /* Borders */
   --color-border: rgba(255,255,255,0.18);
@@ -251,7 +256,7 @@ p { margin: 0 0 var(--space-4); }
   background: #FFFFFF;
   transition: transform var(--anim-fast) ease;
 }
-.switch[data-on="true"] { background: rgba(57,231,95,0.35); }
+.switch[data-on="true"] { background: var(--color-switch-on); }
 .switch[data-on="true"]::after { transform: translateX(18px); }
 
 /* Hero ---------------------------------------------------- */
@@ -278,7 +283,7 @@ p { margin: 0 0 var(--space-4); }
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
-  background: rgba(91,143,168,0.18);
+  background: var(--color-tag-bg);
   border: 1px solid var(--color-border);
   width: fit-content;
 }
@@ -393,7 +398,7 @@ p { margin: 0 0 var(--space-4); }
   text-decoration: none;
 }
 .dp-index a.active {
-  background: rgba(57,231,95,0.18);
+  background: var(--color-active-bg);
   border-color: var(--color-border);
   color: var(--color-text);
 }
@@ -484,6 +489,18 @@ p { margin: 0 0 var(--space-4); }
 body.mode-reduced {
   --anim-fast: 0ms;
   --anim-med: 0ms;
+  --color-brand-navy: #151426;
+  --color-bg: #151426;
+  --color-text: #C8C6D1;
+  --color-text-muted: #5E5C6B;
+  --color-muted-blue: #5E5C6B;
+  --color-soft-lime: #8C7A5E;
+  --color-action-green: #8C7A5E;
+  --color-link: #5E5C6B;
+  --color-border: rgba(255,255,255,0.12);
+  --color-tag-bg: rgba(94,92,107,0.18);
+  --color-active-bg: rgba(140,122,94,0.18);
+  --color-switch-on: rgba(140,122,94,0.35);
   --color-surface: rgba(0,0,0,0.12);
   --color-surface-strong: rgba(0,0,0,0.18);
 }
