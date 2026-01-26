@@ -3,18 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#00466C" />
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <meta name="description" content="Divergify app: local-first tasks, habits, focus, and TAKOTA as your default guide." />
+    <meta name="theme-color" content="#232147" />
+    <meta name="description" content="Divergify app: local-first tasks, habits, focus, and sidekicks." />
+    <meta name="app-base" content="/app/" />
     <title>Divergify</title>
-    <script type="module" crossorigin src="/app/assets/index-WR9g6yxs.js"></script>
-    <link rel="stylesheet" crossorigin href="/app/assets/index-TjRS8Ncd.css">
+    <script type="module" crossorigin src="/app/assets/index-BjAXicwm.js"></script>
+    <link rel="stylesheet" crossorigin href="/app/assets/index-BPrN-lXD.css">
   <link rel="manifest" href="/app/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/app/registerSW.js"></script></head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div id="site-header" class="site-header">
+      <div class="site-shell">
+        <a class="site-brand" href="/app/">Divergify</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/app/">Home</a>
+          <a href="/app/tasks">Tasks</a>
+          <a href="/app/settings">Settings</a>
+          <a href="/app/legal/privacy">Privacy</a>
+        </nav>
+      </div>
+    </div>
     <div id="root"></div>
+    <div id="site-footer" class="site-footer">
+      <div class="site-shell">
+        <div class="footer-meta">Productivity support only. Not medical advice.</div>
+        <div class="footer-links">
+          <a href="/app/legal/privacy">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <script src="/app/js/universal-layout.js" defer></script>
   </body>
 </html>
