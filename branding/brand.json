@@ -1,0 +1,20 @@
+{
+  "brand": {
+    "name": "Divergify",
+    "modes": {
+      "standard": {
+        "bg_primary": "#232147",
+        "text_primary": "#F9EED2",
+        "accent_periwinkle": "#918FA2",
+        "accent_gold": "#CDA977"
+      },
+      "shades": {
+        "bg_primary": "#151426",
+        "text_primary": "#C8C6D1",
+        "accent_periwinkle": "#5E5C6B",
+        "accent_gold": "#8C7A5E",
+        "motion": "none"
+      }
+    }
+  }
+}
