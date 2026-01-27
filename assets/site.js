@@ -2,8 +2,7 @@
 
 const STORAGE_KEYS = {
   shades: "divergify_mode_reduced_interference",
-  tinfoil: "divergify_tinfoil_hat_mode",
-  fieldNotesReading: "fieldNotesReadingMode"
+  tinfoil: "divergify_tinfoil_hat_mode"
 };
 
 const EASTER_EGGS = [
@@ -103,21 +102,12 @@ function ensureFieldNotesStyles() {
   head.appendChild(link);
 }
 
-function initFieldNotesReadingMode() {
+function initFieldNotesLayout() {
   const path = (location.pathname || "").toLowerCase();
   if (!path.includes("/field-notes")) return;
 
   document.body.dataset.fieldNotes = "true";
   ensureFieldNotesStyles();
-
-  let mode = "spacious";
-  try {
-    const stored = localStorage.getItem(STORAGE_KEYS.fieldNotesReading);
-    if (stored === "compact" || stored === "spacious") mode = stored;
-  } catch {
-    mode = "spacious";
-  }
-  document.body.dataset.reading = mode;
 
   const content = qs(".field-notes-body");
   const main = qs("main");
@@ -130,48 +120,6 @@ function initFieldNotesReadingMode() {
 
   const dateLine = main?.querySelector("time")?.closest("p") || null;
   if (dateLine) dateLine.classList.add("field-notes-date");
-
-  if (!content && !dateLine) return;
-
-  let insertAfter = null;
-  if (dateLine) {
-    insertAfter = dateLine;
-  } else if (main) {
-    insertAfter = main.querySelector("h1");
-  }
-
-  if (!insertAfter || qs(".reading-toggle", main || document)) return;
-
-  const toggle = document.createElement("div");
-  toggle.className = "reading-toggle";
-  toggle.innerHTML = `
-    <span class="reading-label">Reading</span>
-    <div class="reading-segmented" role="group" aria-label="Reading mode">
-      <button class="reading-button" type="button" data-reading="spacious" aria-pressed="false">Spacious</button>
-      <button class="reading-button" type="button" data-reading="compact" aria-pressed="false">Compact</button>
-    </div>
-  `;
-
-  insertAfter.parentElement?.insertBefore(toggle, insertAfter.nextSibling);
-
-  const buttons = qsa(".reading-button", toggle);
-  function apply(next) {
-    document.body.dataset.reading = next;
-    buttons.forEach(btn => {
-      btn.setAttribute("aria-pressed", btn.dataset.reading === next ? "true" : "false");
-    });
-    try {
-      localStorage.setItem(STORAGE_KEYS.fieldNotesReading, next);
-    } catch {
-      // ignore storage errors
-    }
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => apply(btn.dataset.reading || "spacious"));
-  });
-
-  apply(mode);
 }
 
 /* Divergipedia rendering ---------------------------------------- */
@@ -296,6 +244,6 @@ function renderDivergipedia() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await injectPartials();
-  initFieldNotesReadingMode();
+  initFieldNotesLayout();
   renderDivergipedia();
 });
