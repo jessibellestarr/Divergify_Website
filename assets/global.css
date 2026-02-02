@@ -280,11 +280,12 @@ p { margin: 0 0 var(--space-4); }
   align-items: center;
   gap: 10px;
   border-radius: var(--radius-pill);
-  padding: 6px 12px;
-  font-size: var(--text-xs);
+  padding: 8px 14px;
+  font-size: var(--text-sm);
+  line-height: 1.4;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
-  background: var(--color-tag-bg);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   width: fit-content;
 }
