@@ -5,6 +5,7 @@
 ------------------------------------------------------ */
 
 :root {
+  font-size: 17px;
   /* Brand core */
   --color-brand-navy: #232147;
   --color-muted-blue: #918FA2;
@@ -84,6 +85,10 @@ html, body {
   line-height: 1.6;
   letter-spacing: 0.01em;
   min-height: 100vh;
+}
+
+body {
+  color: var(--color-text);
 }
 
 * { box-sizing: border-box; }
