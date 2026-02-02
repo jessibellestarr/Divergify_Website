@@ -494,8 +494,8 @@ body.mode-reduced {
   --color-brand-navy: #151426;
   --color-bg: #151426;
   --color-text: #C8C6D1;
-  --color-text-muted: #5E5C6B;
-  --color-muted-blue: #5E5C6B;
+  --color-text-muted: #9A97A8;
+  --color-muted-blue: #9A97A8;
   --color-soft-lime: #8C7A5E;
   --color-action-green: #8C7A5E;
   --color-link: #5E5C6B;
@@ -503,8 +503,8 @@ body.mode-reduced {
   --color-tag-bg: rgba(94,92,107,0.18);
   --color-active-bg: rgba(140,122,94,0.18);
   --color-switch-on: rgba(140,122,94,0.35);
-  --color-surface: rgba(0,0,0,0.12);
-  --color-surface-strong: rgba(0,0,0,0.18);
+  --color-surface: rgba(255,255,255,0.06);
+  --color-surface-strong: rgba(255,255,255,0.10);
 }
 
 body.mode-reduced * { transition: none !important; animation: none !important; }
