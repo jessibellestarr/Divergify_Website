@@ -510,3 +510,19 @@ body.mode-reduced * { transition: none !important; animation: none !important; }
   .divergipedia-shell { grid-template-columns: 1fr; }
   .dp-index { position: relative; top: 0; height: auto; }
 }
+
+body,
+p,
+li,
+span,
+div {
+  color: var(--color-text) !important;
+}
+
+:root {
+  font-size: 17px;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
