@@ -66,3 +66,45 @@ body[data-field-notes="true"] .field-notes-article a:focus-visible {
   outline: 2px solid var(--color-soft-lime);
   outline-offset: 2px;
 }
+
+body[data-field-notes="true"] .share-bar {
+  margin: 1rem 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+body[data-field-notes="true"] .share-label {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+body[data-field-notes="true"] .share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+body[data-field-notes="true"] .share-buttons a,
+body[data-field-notes="true"] .share-buttons button {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body[data-field-notes="true"] .share-buttons a:hover,
+body[data-field-notes="true"] .share-buttons button:hover,
+body[data-field-notes="true"] .share-buttons a:focus-visible,
+body[data-field-notes="true"] .share-buttons button:focus-visible {
+  background: var(--color-surface-strong);
+  outline: none;
+}

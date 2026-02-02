@@ -120,6 +120,77 @@ function initFieldNotesLayout() {
 
   const dateLine = main?.querySelector("time")?.closest("p") || null;
   if (dateLine) dateLine.classList.add("field-notes-date");
+
+  injectFieldNotesShare(main);
+}
+
+function injectFieldNotesShare(main) {
+  if (!main) return;
+  if (main.querySelector("[data-share-bar]")) return;
+
+  const title = main.querySelector("h1")?.textContent?.trim() || document.title;
+  const url = location.href;
+  const encodedUrl = encodeURIComponent(url);
+  const encodedText = encodeURIComponent(title);
+
+  const share = document.createElement("div");
+  share.className = "share-bar";
+  share.dataset.shareBar = "true";
+  share.innerHTML = `
+    <div class="share-label">Share</div>
+    <div class="share-buttons">
+      <a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}" rel="noopener" target="_blank">Social</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" rel="noopener" target="_blank">Facebook</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="mailto:?subject=${encodedText}&body=${encodedUrl}">Email</a>
+      <button type="button" data-copy-link>Copy link</button>
+      <button type="button" data-copy-text>Copy text</button>
+    </div>
+  `;
+
+  const insertAfter = main.querySelector("h1") || main.firstElementChild;
+  if (insertAfter?.nextSibling) {
+    insertAfter.parentNode.insertBefore(share, insertAfter.nextSibling);
+  } else {
+    main.appendChild(share);
+  }
+
+  const copyLink = share.querySelector("[data-copy-link]");
+  const copyText = share.querySelector("[data-copy-text]");
+  if (copyLink) {
+    copyLink.addEventListener("click", () => copyToClipboard(url, copyLink));
+  }
+  if (copyText) {
+    copyText.addEventListener("click", () => copyToClipboard(`${title} — ${url}`, copyText));
+  }
+}
+
+function copyToClipboard(text, button) {
+  const done = () => {
+    if (!button) return;
+    const prev = button.textContent;
+    button.textContent = "Copied";
+    setTimeout(() => { button.textContent = prev; }, 1400);
+  };
+
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+
+function fallbackCopy(text, done) {
+  const temp = document.createElement("textarea");
+  temp.value = text;
+  temp.setAttribute("readonly", "true");
+  temp.style.position = "absolute";
+  temp.style.left = "-9999px";
+  document.body.appendChild(temp);
+  temp.select();
+  try { document.execCommand("copy"); } catch {}
+  document.body.removeChild(temp);
+  done();
 }
 
 /* Divergipedia rendering ---------------------------------------- */

@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     header.className = "site-header";
     header.innerHTML = `
       <div class="site-shell">
-        <a class="site-brand" href="${link("")}">Divergify</a>
+        <a class="site-brand" href="https://divergify.app/">Divergify</a>
         <nav class="site-nav" aria-label="Primary">
-          <a href="${link("")}">Home</a>
+          <a href="https://divergify.app/">Site Home</a>
+          <a href="${link("")}">App Home</a>
           <a href="${link("tasks")}">Tasks</a>
           <a href="${link("settings")}">Settings</a>
           <a href="${link("legal/privacy")}">Privacy</a>
