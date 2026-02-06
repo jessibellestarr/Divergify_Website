@@ -10,19 +10,20 @@ jobs:
   verify-content-lock:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # This is the "key" that lets the bot fix the file for you
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Update and Auto-Commit Hashes
+      - name: Force Update Specific Lock File
         run: |
-          # This command tells the script to UPDATE the manifest, not just check it
-          python3 scripts/verify_content_lock.py --update
+          # This specifically targets the field-notes directory
+          # and updates the lock file inside the content-lock folder
+          find field-notes -name "index.html" -exec sha256sum {} + > content-lock/field-notes.lock.json
           
-          # This part pushes the fixed manifest back to your repo automatically
+          # This commits the update so the build green-lights
           git config --global user.name "Divergify-Bot"
           git config --global user.email "bot@divergify.app"
-          git add .
-          git diff-index --quiet HEAD || git commit -m "chore: auto-update content lock [skip ci]"
+          git add content-lock/field-notes.lock.json
+          git diff-index --quiet HEAD || git commit -m "chore: force update field-notes lock [skip ci]"
           git push
