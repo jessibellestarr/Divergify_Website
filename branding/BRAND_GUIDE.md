@@ -1,10 +1,13 @@
-# Divergify Brand Guide (Source of Truth)
+# Divergify Brand Guide (Derived Index)
 
-This guide is derived from:
+Source of truth:
 - `branding/kit/THE NEUROSCHEMA (The Specs).docx`
-- `branding/kit/Brand.json.docx`
 
-If there is any conflict, follow the specs doc and the brand JSON values below.
+Supporting reference:
+- `branding/brand.json`
+
+If there is any conflict, follow the specs doc first, then the brand JSON values.
+All other branding guides are recycled and non-authoritative.
 
 ## Core philosophy
 - The system is legacy software. Divergent minds are different operating specs.
@@ -23,6 +26,7 @@ If there is any conflict, follow the specs doc and the brand JSON values below.
 - North Star (Takota): 8-point geometric star (compass style).
   - Safety rule: never use a 5-point star.
   - Behavior: steady, grounding, never flashing.
+  - Icon usage: use North Star or Wordmark only.
 
 ## Color system (from Brand.json)
 Standard mode:
@@ -53,8 +57,14 @@ Shades mode (low-stim / overload):
 - High cotton, no noisy synthetics.
 
 ## Assets in this repo
-- `branding/Wordmark.png`
-- `branding/Icon.png`
-- `branding/divergify_logo__5000.png`
-- `branding/divergify_logo_transparent_5000.png`
-- `branding/THE NEUROSCHEMA (The Specs).docx`
+- `assets/brand/wordmark.png`
+- `assets/brand/wordmark-transparent.png`
+- `assets/brand/divergify-constellation-logo.png`
+- `assets/brand/divergify-logo-transparent.png`
+- `assets/brand/divergify-icon-braincompass.svg` (North Star icon)
+- `branding/kit/THE NEUROSCHEMA (The Specs).docx`
+
+## Recycled guides
+- `branding/kit/recycled/Brand.json.docx`
+- `divergify-hub/recycled/divergify_universal_brand_guide.pdf`
+- `divergify-hub/branding/recycled/divergify_universal_brand_guide.pdf`

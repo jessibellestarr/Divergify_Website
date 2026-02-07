@@ -3,8 +3,8 @@
 
 [[redirects]]
   from = "/app/*"
-  to = "/app/index.html"
-  status = 200
+  to = "/hub"
+  status = 301
 
 [[redirects]]
   from = "/blog/"
