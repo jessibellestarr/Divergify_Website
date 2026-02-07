@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Divergify Redirect</title>
+    <meta http-equiv="refresh" content="0; url=/hub" />
+  </head>
+  <body>
+    <p>Redirecting to the Hub...</p>
+    <script>
+      (function () {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.getRegistrations().then((regs) => {
+            regs.forEach((reg) => reg.unregister());
+          });
+        }
+        window.location.replace("/hub");
+      })();
+    </script>
+  </body>
+</html>
