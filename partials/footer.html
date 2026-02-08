@@ -1,18 +1,17 @@
 <footer class="site-footer" role="contentinfo">
   <div class="site-footer-inner">
-    <div class="footer-row footer-support">
-      <div class="footer-links">
-        <a href="https://ko-fi.com/divergify" rel="noopener" target="_blank">Kofi</a>
-      </div>
-    </div>
-
     <div class="footer-row footer-social">
-      <div class="footer-links">
-        <a href="https://www.facebook.com/" rel="noopener" target="_blank">Facebook</a>
-        <a href="https://www.instagram.com/divergify/" rel="noopener" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@divergify" rel="noopener" target="_blank">TikTok</a>
-        <a href="https://ko-fi.com/divergify" rel="noopener" target="_blank">Tip jar</a>
+      <div class="footer-links footer-actions footer-social-links">
+        <a href="https://www.facebook.com/profile.php?id=61579035562612" rel="noopener" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/divergify.app/" rel="noopener" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@divergify.app" rel="noopener" target="_blank">TikTok</a>
         <a href="mailto:chaoscontrol@divergify.app">Email</a>
+      </div>
+
+      <div class="footer-links footer-actions footer-tipjar">
+        <a class="tipjar-button" href="https://ko-fi.com/divergify" rel="noopener" target="_blank">
+          Tip jar
+        </a>
       </div>
     </div>
 
@@ -37,3 +36,66 @@
     })();
   </script>
 </footer>
+
+<style>
+  .footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .footer-tipjar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .tipjar-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 9999px;
+    text-decoration: none;
+
+    background: #002044;
+    color: #ffffff;
+    border: 1px solid rgba(50, 255, 115, 0.45);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .tipjar-button:hover {
+    border-color: rgba(50, 255, 115, 0.9);
+    transform: translateY(-1px);
+  }
+
+  .tipjar-button:focus-visible {
+    outline: 3px solid rgba(50, 255, 115, 0.9);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 560px) {
+    .footer-social {
+      align-items: flex-start;
+    }
+
+    .footer-tipjar {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .tipjar-button {
+      width: 100%;
+    }
+  }
+</style>
