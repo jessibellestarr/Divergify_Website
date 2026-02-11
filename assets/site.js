@@ -20,8 +20,121 @@ const EASTER_EGGS = [
   "This footer rotates so your brain gets a tiny novelty hit. You are welcome."
 ];
 
+const INLINE_HEADER_PARTIAL = `
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a class="brand" href="/" aria-label="Divergify home">Divergify</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/">Divergify</a>
+      <a href="/hub">The Hub</a>
+      <a href="/field-notes.html">Field Notes</a>
+      <a href="/dopamine-depot.html">Dopamine Depot</a>
+      <a href="/divergipedia.html">Divergipedia</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="header-right" aria-label="Modes">
+      <div class="toggle">
+        <span>Tin Foil Hat</span>
+        <button class="switch" type="button" role="switch" aria-checked="false" data-switch="tinfoil" data-on="false"></button>
+      </div>
+      <div class="toggle">
+        <span>Shades</span>
+        <button class="switch" type="button" role="switch" aria-checked="false" data-switch="shades" data-on="false"></button>
+      </div>
+    </div>
+  </div>
+</header>
+`;
+
+const INLINE_FOOTER_PARTIAL = `
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div class="footer-row footer-social">
+      <div class="footer-links footer-actions">
+        <a href="https://www.facebook.com/profile.php?id=61579035562612" rel="noopener" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/divergify.app/" rel="noopener" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@divergify.app" rel="noopener" target="_blank">TikTok</a>
+        <a href="mailto:chaoscontrol@divergify.app">Email</a>
+      </div>
+      <div class="footer-links footer-actions footer-tipjar">
+        <a href="https://ko-fi.com/divergify" rel="noopener" target="_blank">Tip jar</a>
+      </div>
+    </div>
+    <div class="footer-row footer-legal">
+      <div class="footer-links footer-legal-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+      </div>
+    </div>
+    <div class="easter-egg" data-easter-egg></div>
+    <div class="footer-small">
+      © <span id="year"></span> Divergify. All rights reserved. Divergify is a trademark of its owner. No medical or legal advice.
+    </div>
+  </div>
+</footer>
+`;
+
 function qs(sel, root = document) { return root.querySelector(sel); }
 function qsa(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
+
+function ensurePartialSlots() {
+  if (!document.body) return;
+
+  const existingSiteHeader = qs(".site-header, #site-header");
+  const existingSiteFooter = qs(".site-footer, #site-footer");
+
+  let headerSlot = qs("[data-partial='header']");
+  let footerSlot = qs("[data-partial='footer']");
+
+  if (!headerSlot && !existingSiteHeader) {
+    headerSlot = document.createElement("div");
+    headerSlot.setAttribute("data-partial", "header");
+    document.body.insertAdjacentElement("afterbegin", headerSlot);
+  }
+
+  if (!footerSlot && !existingSiteFooter) {
+    footerSlot = document.createElement("div");
+    footerSlot.setAttribute("data-partial", "footer");
+    const siteScript = qs("script[src='/assets/site.js']");
+    if (siteScript?.parentNode) {
+      siteScript.parentNode.insertBefore(footerSlot, siteScript);
+    } else {
+      document.body.appendChild(footerSlot);
+    }
+  }
+}
+
+function getPartialCandidates(partialName) {
+  const path = location.pathname || "/";
+  const directory = path.endsWith("/") ? path : path.replace(/[^/]*$/, "");
+  const depth = directory.split("/").filter(Boolean).length;
+  const relativeUp = depth > 0 ? "../".repeat(depth) : "";
+  return [
+    `/partials/${partialName}.html`,
+    `${relativeUp}partials/${partialName}.html`,
+    `partials/${partialName}.html`
+  ];
+}
+
+async function loadPartialHtml(partialName) {
+  const candidates = getPartialCandidates(partialName);
+  for (const candidate of candidates) {
+    try {
+      const response = await fetch(candidate, { cache: "no-store" });
+      if (!response.ok) continue;
+      const html = await response.text();
+      if (html && html.trim()) return html;
+    } catch {}
+  }
+  return partialName === "header" ? INLINE_HEADER_PARTIAL : INLINE_FOOTER_PARTIAL;
+}
+
+function syncFooterYear() {
+  qsa("#year").forEach(node => {
+    node.textContent = String(new Date().getFullYear());
+  });
+}
 
 function setSwitch(el, on) {
   el.dataset.on = on ? "true" : "false";
@@ -29,8 +142,8 @@ function setSwitch(el, on) {
 }
 
 function applyModesFromStorage() {
-  const shadesOn = localStorage.getItem(STORAGE_KEYS.shades) === "true";
-  const tinfoilOn = localStorage.getItem(STORAGE_KEYS.tinfoil) === "true";
+  const shadesOn = readLocalStorage(STORAGE_KEYS.shades) === "true";
+  const tinfoilOn = readLocalStorage(STORAGE_KEYS.tinfoil) === "true";
   document.body.classList.toggle("mode-reduced", shadesOn);
 
   const shadesSwitch = qs("[data-switch='shades']");
@@ -46,9 +159,9 @@ function bindSwitches() {
       if (!key) return;
 
       const storageKey = key === "shades" ? STORAGE_KEYS.shades : STORAGE_KEYS.tinfoil;
-      const current = localStorage.getItem(storageKey) === "true";
+      const current = readLocalStorage(storageKey) === "true";
       const next = !current;
-      localStorage.setItem(storageKey, next ? "true" : "false");
+      writeLocalStorage(storageKey, next ? "true" : "false");
       applyModesFromStorage();
     });
   });
@@ -59,28 +172,17 @@ async function injectPartials() {
   const footerSlot = qs("[data-partial='footer']");
   if (!headerSlot && !footerSlot) return;
 
-  const jobs = [];
-
   if (headerSlot) {
-    jobs.push(
-      fetch("/partials/header.html")
-        .then(r => r.text())
-        .then(html => { headerSlot.innerHTML = html; })
-    );
+    headerSlot.innerHTML = await loadPartialHtml("header");
   }
 
   if (footerSlot) {
-    jobs.push(
-      fetch("/partials/footer.html")
-        .then(r => r.text())
-        .then(html => { footerSlot.innerHTML = html; })
-    );
+    footerSlot.innerHTML = await loadPartialHtml("footer");
   }
-
-  await Promise.all(jobs);
 
   if (headerSlot) setActiveNav();
   if (footerSlot) setFooterEasterEgg();
+  syncFooterYear();
   applyModesFromStorage();
   bindSwitches();
 }
@@ -338,6 +440,7 @@ function renderDivergipedia() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  ensurePartialSlots();
   await injectPartials();
   ensureLegalFooterFallback();
   initFieldNotesLayout();
