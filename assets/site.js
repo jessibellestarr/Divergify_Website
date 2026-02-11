@@ -1,9 +1,19 @@
 /* Divergify site runtime: universal header/footer, modes, easter eggs, and Divergipedia rendering */
 
 const STORAGE_KEYS = {
-  shades: "divergify_mode_reduced_interference",
-  tinfoil: "divergify_tinfoil_hat_mode"
+  shades: "divergify_interference",
+  tinfoil: "divergify_tinfoil",
+  logic: "divergify_brain_mode"
 };
+
+const LEGACY_STORAGE_KEYS = {
+  shades: ["divergify_mode_reduced_interference", "divergify_mode_shades"],
+  tinfoil: ["divergify_tinfoil_hat_mode", "divergify_mode_tinfoil"],
+  logic: []
+};
+
+const LOGIC_MODES = new Set(["sprint", "analytical"]);
+const DEFAULT_LOGIC_MODE = "sprint";
 
 const COMPLIANCE_KEYS = {
   zeroTrackingBannerDismissed: "divergify_zero_tracking_banner_dismissed_v1"
@@ -43,6 +53,10 @@ const INLINE_HEADER_PARTIAL = `
       <div class="toggle">
         <span>Shades</span>
         <button class="switch" type="button" role="switch" aria-checked="false" data-switch="shades" data-on="false"></button>
+      </div>
+      <div class="toggle">
+        <span>Brain Mode</span>
+        <button class="switch" type="button" role="switch" aria-checked="false" data-switch="logic" data-on="false"></button>
       </div>
     </div>
   </div>
@@ -138,41 +152,156 @@ function syncFooterYear() {
   });
 }
 
+function getRawModeValue(key) {
+  const primary = readLocalStorage(key);
+  if (primary !== null) return primary;
+
+  const legacyKeys = LEGACY_STORAGE_KEYS[key] || [];
+  for (const legacyKey of legacyKeys) {
+    const legacyValue = readLocalStorage(legacyKey);
+    if (legacyValue !== null) {
+      return legacyValue;
+    }
+  }
+  return null;
+}
+
+function parseBooleanMode(value) {
+  if (typeof value !== "string") return false;
+  const normalized = value.trim().toLowerCase();
+  return normalized === "active" || normalized === "true" || normalized === "1" || normalized === "on";
+}
+
+function getMode(key) {
+  const rawValue = getRawModeValue(key);
+  if (key === STORAGE_KEYS.logic) {
+    const normalized = (rawValue || DEFAULT_LOGIC_MODE).toLowerCase();
+    return LOGIC_MODES.has(normalized) ? normalized : DEFAULT_LOGIC_MODE;
+  }
+  return parseBooleanMode(rawValue);
+}
+
+function setMode(key, value) {
+  try {
+    const normalizedValue = typeof value === "boolean" ? (value ? "active" : "inactive") : String(value);
+    writeLocalStorage(key, normalizedValue);
+    applyModesFromStorage();
+  } catch (error) {
+    console.error("Divergify: Storage locked.", error);
+  }
+}
+
 function setSwitch(el, on) {
   el.dataset.on = on ? "true" : "false";
   el.setAttribute("aria-checked", on ? "true" : "false");
 }
 
 function applyModesFromStorage() {
-  const shadesOn = readLocalStorage(STORAGE_KEYS.shades) === "true";
-  const tinfoilOn = readLocalStorage(STORAGE_KEYS.tinfoil) === "true";
-  document.body.classList.toggle("mode-reduced", shadesOn);
+  const root = document.documentElement;
+  const body = document.body;
+  if (!root || !body) return;
+
+  const shadesOn = getMode(STORAGE_KEYS.shades);
+  const tinfoilOn = getMode(STORAGE_KEYS.tinfoil);
+  const brainMode = getMode(STORAGE_KEYS.logic);
+
+  root.classList.toggle("reduced-interference", shadesOn);
+  root.classList.toggle("tin-foil-mode", tinfoilOn);
+
+  body.classList.toggle("mode-reduced", shadesOn);
+  body.classList.toggle("mode-tinfoil", tinfoilOn);
+  body.classList.remove("brain-sprint", "brain-analytical");
+  body.classList.add(`brain-${brainMode}`);
+
+  root.dataset.brainMode = brainMode;
 
   const shadesSwitch = qs("[data-switch='shades']");
   const tinfoilSwitch = qs("[data-switch='tinfoil']");
+  const logicSwitch = qs("[data-switch='logic']");
   if (shadesSwitch) setSwitch(shadesSwitch, shadesOn);
   if (tinfoilSwitch) setSwitch(tinfoilSwitch, tinfoilOn);
+  if (logicSwitch) {
+    const analyticalOn = brainMode === "analytical";
+    setSwitch(logicSwitch, analyticalOn);
+    logicSwitch.setAttribute("aria-label", `Brain mode: ${brainMode}`);
+  }
+
+  const speech = qs("#TAKOTA-speech");
+  if (speech) {
+    const energyRaw = qs("#energy-slider")?.value;
+    const energy = Number.parseInt(energyRaw ?? "50", 10);
+    updateTakotaSpeech(Number.isFinite(energy) ? energy : 50, brainMode, speech);
+  }
+}
+
+function updateTakotaSpeech(energy, mode, element) {
+  const scripts = {
+    sprint: {
+      low: "Low battery? No problem. Comfort Quest mode active. Minimum effort, maximum chill.",
+      mid: "Baseline stable. Ready for an Anchor Task? Let's move while the dopamine is fresh.",
+      high: "Full throttle detected. Let's point that hyperfocus at something useful, fast."
+    },
+    analytical: {
+      low: "Energy reserves <30%. Priority: Sensory regulation. Suspend high-load tasks.",
+      mid: "System optimal for sequential processing. Identifying next logical step...",
+      high: "High arousal state. Best utilized for technical deep-dives or data structure."
+    }
+  };
+
+  const selectedMode = LOGIC_MODES.has(mode) ? mode : DEFAULT_LOGIC_MODE;
+  const level = energy < 30 ? "low" : (energy < 70 ? "mid" : "high");
+  element.textContent = scripts[selectedMode][level];
 }
 
 function bindSwitches() {
   qsa(".switch").forEach(sw => {
     sw.addEventListener("click", () => {
-      const key = sw.dataset.switch;
-      if (!key) return;
+      const switchType = sw.dataset.switch;
+      if (!switchType) return;
 
-      const storageKey = key === "shades" ? STORAGE_KEYS.shades : STORAGE_KEYS.tinfoil;
-      const current = readLocalStorage(storageKey) === "true";
-      const next = !current;
-      writeLocalStorage(storageKey, next ? "true" : "false");
-      applyModesFromStorage();
+      if (switchType === "logic") {
+        const current = getMode(STORAGE_KEYS.logic);
+        const next = current === "sprint" ? "analytical" : "sprint";
+        setMode(STORAGE_KEYS.logic, next);
+        return;
+      }
+
+      if (switchType === "shades") {
+        setMode(STORAGE_KEYS.shades, !getMode(STORAGE_KEYS.shades));
+        return;
+      }
+
+      if (switchType === "tinfoil") {
+        setMode(STORAGE_KEYS.tinfoil, !getMode(STORAGE_KEYS.tinfoil));
+      }
     });
+  });
+}
+
+function bindTakotaEnergySync() {
+  const slider = qs("#energy-slider");
+  const speech = qs("#TAKOTA-speech");
+  if (!slider || !speech) return;
+  if (slider.dataset.brainSyncBound === "1") return;
+  slider.dataset.brainSyncBound = "1";
+  slider.addEventListener("input", () => {
+    const energy = Number.parseInt(slider.value || "50", 10);
+    updateTakotaSpeech(Number.isFinite(energy) ? energy : 50, getMode(STORAGE_KEYS.logic), speech);
   });
 }
 
 async function injectPartials() {
   const headerSlot = qs("[data-partial='header']");
   const footerSlot = qs("[data-partial='footer']");
-  if (!headerSlot && !footerSlot) return;
+  if (!headerSlot && !footerSlot) {
+    if (qs(".site-header")) setActiveNav();
+    if (qs(".site-footer")) setFooterEasterEgg();
+    syncFooterYear();
+    applyModesFromStorage();
+    bindSwitches();
+    bindTakotaEnergySync();
+    return;
+  }
 
   if (headerSlot) {
     headerSlot.innerHTML = await loadPartialHtml("header");
@@ -187,6 +316,7 @@ async function injectPartials() {
   syncFooterYear();
   applyModesFromStorage();
   bindSwitches();
+  bindTakotaEnergySync();
 }
 
 function ensureLegalFooterFallback() {
