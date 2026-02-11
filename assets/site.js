@@ -306,16 +306,19 @@ function initFieldNotesLayout() {
   if (!path.includes("/field-notes")) return;
 
   document.body.dataset.fieldNotes = "true";
+  const isFieldNotesIndex =
+    path === "/field-notes" ||
+    path === "/field-notes/" ||
+    path === "/field-notes/index.html" ||
+    path === "/field-notes.html";
+  document.body.dataset.fieldNotesView = isFieldNotesIndex ? "index" : "article";
   ensureFieldNotesStyles();
+  if (isFieldNotesIndex) return;
 
   const content = qs(".field-notes-body");
   const main = qs("main");
-  if (content) {
-    content.classList.add("field-notes-article");
-  } else {
-    const article = main?.querySelector(".card");
-    if (article) article.classList.add("field-notes-article");
-  }
+  const article = content || main?.querySelector("article") || main?.querySelector(".card");
+  if (article) article.classList.add("field-notes-article");
 
   const dateLine = main?.querySelector("time")?.closest("p") || null;
   if (dateLine) dateLine.classList.add("field-notes-date");

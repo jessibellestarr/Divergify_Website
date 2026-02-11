@@ -4,65 +4,65 @@ body[data-field-notes="true"] {
   color: var(--color-text);
 }
 
-body[data-field-notes="true"] .page-shell {
+body[data-field-notes="true"][data-field-notes-view="article"] .page-shell {
   max-width: 72ch;
   margin: 0 auto;
   padding-left: clamp(16px, 4vw, 32px);
   padding-right: clamp(16px, 4vw, 32px);
 }
 
-body[data-field-notes="true"] .site-header .wordmark {
+body[data-field-notes="true"][data-field-notes-view="article"] .site-header .wordmark {
   height: 32px;
 }
 
-body[data-field-notes="true"] .field-notes-article {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-article {
   font-size: 18px;
   line-height: 1.8;
 }
 
-body[data-field-notes="true"] h1 {
+body[data-field-notes="true"][data-field-notes-view="article"] h1 {
   margin-bottom: 0.6em;
 }
 
-body[data-field-notes="true"] h2,
-body[data-field-notes="true"] h3 {
+body[data-field-notes="true"][data-field-notes-view="article"] h2,
+body[data-field-notes="true"][data-field-notes-view="article"] h3 {
   margin-top: 1.6em;
   margin-bottom: 0.6em;
 }
 
-body[data-field-notes="true"] .field-notes-article p {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-article p {
   margin: 0 0 1.25em;
 }
 
-body[data-field-notes="true"] .field-notes-date {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-date {
   margin: 0 0 1.4em;
   color: var(--color-text-muted);
 }
 
-body[data-field-notes="true"] .field-notes-article .card,
-body[data-field-notes="true"] .card {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-article .card,
+body[data-field-notes="true"][data-field-notes-view="article"] .card {
   background: transparent;
   border: none;
   box-shadow: none;
   padding: 0;
 }
 
-body[data-field-notes="true"] .field-notes-list {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-list {
   margin-top: 1rem;
 }
 
-body[data-field-notes="true"] .field-notes-list li {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-list li {
   margin-bottom: 0.75rem;
 }
 
-body[data-field-notes="true"] .field-notes-article a {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-article a {
   color: var(--color-text);
   text-decoration: underline;
   text-decoration-thickness: 0.12em;
   text-underline-offset: 0.18em;
 }
 
-body[data-field-notes="true"] .field-notes-article a:focus-visible {
+body[data-field-notes="true"][data-field-notes-view="article"] .field-notes-article a:focus-visible {
   outline: 2px solid var(--color-soft-lime);
   outline-offset: 2px;
 }
