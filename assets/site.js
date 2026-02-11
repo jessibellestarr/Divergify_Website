@@ -24,7 +24,9 @@ const INLINE_HEADER_PARTIAL = `
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" role="banner">
   <div class="site-header-inner">
-    <a class="brand" href="/" aria-label="Divergify home">Divergify</a>
+    <a class="brand" href="/" aria-label="Divergify home">
+      <img class="wordmark" src="/assets/brand/wordmark-light.png" alt="Divergify" />
+    </a>
     <nav class="nav" aria-label="Primary">
       <a href="/">Divergify</a>
       <a href="/hub">The Hub</a>

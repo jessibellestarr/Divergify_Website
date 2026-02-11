@@ -196,7 +196,13 @@ p { margin: 0 0 var(--space-4); }
 }
 
 .brand svg { height: 26px; width: auto; }
-.wordmark { height: 40px; width: auto; display: block; }
+.wordmark {
+  height: 42px;
+  width: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 0 1px rgba(255,255,255,0.16));
+}
 
 .nav {
   display: flex;
