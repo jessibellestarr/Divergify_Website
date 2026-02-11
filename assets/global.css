@@ -204,6 +204,13 @@ p { margin: 0 0 var(--space-4); }
   filter: drop-shadow(0 0 1px rgba(255,255,255,0.16));
 }
 
+.wordmark-logo {
+  height: 64px;
+  width: auto;
+  margin: -8px 0;
+  object-fit: contain;
+}
+
 .nav {
   display: flex;
   align-items: center;

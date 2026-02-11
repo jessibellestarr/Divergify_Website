@@ -25,7 +25,7 @@ const INLINE_HEADER_PARTIAL = `
 <header class="site-header" role="banner">
   <div class="site-header-inner">
     <a class="brand" href="/" aria-label="Divergify home">
-      <img class="wordmark" src="/assets/brand/wordmark-light.png" alt="Divergify" />
+      <img class="wordmark wordmark-logo" src="/assets/brand/tranparentBG-logo.png" alt="Divergify" />
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="/">Divergify</a>
