@@ -12,8 +12,11 @@ const LEGACY_STORAGE_KEYS = {
   logic: []
 };
 
-const LOGIC_MODES = new Set(["sprint", "analytical"]);
-const DEFAULT_LOGIC_MODE = "sprint";
+const LOGIC_MODES = new Set(["creative", "analytical"]);
+const DEFAULT_LOGIC_MODE = "creative";
+const LOGIC_MODE_ALIASES = {
+  sprint: "creative"
+};
 
 const COMPLIANCE_KEYS = {
   zeroTrackingBannerDismissed: "divergify_zero_tracking_banner_dismissed_v1"
@@ -55,7 +58,7 @@ const INLINE_HEADER_PARTIAL = `
         <button class="switch" type="button" role="switch" aria-checked="false" data-switch="shades" data-on="false"></button>
       </div>
       <div class="toggle">
-        <span>Brain Mode</span>
+        <span data-brain-mode-label>Brain Mode: Creative</span>
         <button class="switch" type="button" role="switch" aria-checked="false" data-switch="logic" data-on="false"></button>
       </div>
     </div>
@@ -173,18 +176,32 @@ function parseBooleanMode(value) {
   return normalized === "active" || normalized === "true" || normalized === "1" || normalized === "on";
 }
 
+function normalizeLogicMode(value) {
+  const normalized = String(value || DEFAULT_LOGIC_MODE).trim().toLowerCase();
+  const canonical = LOGIC_MODE_ALIASES[normalized] || normalized;
+  return LOGIC_MODES.has(canonical) ? canonical : DEFAULT_LOGIC_MODE;
+}
+
+function formatBrainMode(mode) {
+  return mode === "analytical" ? "Analytical" : "Creative";
+}
+
 function getMode(key) {
   const rawValue = getRawModeValue(key);
   if (key === STORAGE_KEYS.logic) {
-    const normalized = (rawValue || DEFAULT_LOGIC_MODE).toLowerCase();
-    return LOGIC_MODES.has(normalized) ? normalized : DEFAULT_LOGIC_MODE;
+    return normalizeLogicMode(rawValue);
   }
   return parseBooleanMode(rawValue);
 }
 
 function setMode(key, value) {
   try {
-    const normalizedValue = typeof value === "boolean" ? (value ? "active" : "inactive") : String(value);
+    const normalizedValue =
+      typeof value === "boolean"
+        ? (value ? "active" : "inactive")
+        : key === STORAGE_KEYS.logic
+          ? normalizeLogicMode(value)
+          : String(value);
     writeLocalStorage(key, normalizedValue);
     applyModesFromStorage();
   } catch (error) {
@@ -211,7 +228,7 @@ function applyModesFromStorage() {
 
   body.classList.toggle("mode-reduced", shadesOn);
   body.classList.toggle("mode-tinfoil", tinfoilOn);
-  body.classList.remove("brain-sprint", "brain-analytical");
+  body.classList.remove("brain-sprint", "brain-creative", "brain-analytical");
   body.classList.add(`brain-${brainMode}`);
 
   root.dataset.brainMode = brainMode;
@@ -224,8 +241,11 @@ function applyModesFromStorage() {
   if (logicSwitch) {
     const analyticalOn = brainMode === "analytical";
     setSwitch(logicSwitch, analyticalOn);
-    logicSwitch.setAttribute("aria-label", `Brain mode: ${brainMode}`);
+    logicSwitch.setAttribute("aria-label", `Brain mode: ${formatBrainMode(brainMode)}`);
   }
+  qsa("[data-brain-mode-label]").forEach(el => {
+    el.textContent = `Brain Mode: ${formatBrainMode(brainMode)}`;
+  });
 
   const speech = qs("#TAKOTA-speech");
   if (speech) {
@@ -237,10 +257,10 @@ function applyModesFromStorage() {
 
 function updateTakotaSpeech(energy, mode, element) {
   const scripts = {
-    sprint: {
-      low: "Low battery? No problem. Comfort Quest mode active. Minimum effort, maximum chill.",
-      mid: "Baseline stable. Ready for an Anchor Task? Let's move while the dopamine is fresh.",
-      high: "Full throttle detected. Let's point that hyperfocus at something useful, fast."
+    creative: {
+      low: "Creative battery is low. Keep it tiny and gentle.",
+      mid: "Creative mode stable. Start with one visible anchor task.",
+      high: "Creative surge detected. Channel that momentum into one useful outcome."
     },
     analytical: {
       low: "Energy reserves <30%. Priority: Sensory regulation. Suspend high-load tasks.",
@@ -249,7 +269,7 @@ function updateTakotaSpeech(energy, mode, element) {
     }
   };
 
-  const selectedMode = LOGIC_MODES.has(mode) ? mode : DEFAULT_LOGIC_MODE;
+  const selectedMode = normalizeLogicMode(mode);
   const level = energy < 30 ? "low" : (energy < 70 ? "mid" : "high");
   element.textContent = scripts[selectedMode][level];
 }
@@ -262,7 +282,7 @@ function bindSwitches() {
 
       if (switchType === "logic") {
         const current = getMode(STORAGE_KEYS.logic);
-        const next = current === "sprint" ? "analytical" : "sprint";
+        const next = current === "creative" ? "analytical" : "creative";
         setMode(STORAGE_KEYS.logic, next);
         return;
       }
@@ -358,6 +378,13 @@ function writeLocalStorage(key, value) {
 }
 
 function renderZeroTrackingBanner() {
+  const path = (location.pathname || "").toLowerCase();
+  const isHubSurface =
+    path === "/hub" ||
+    path === "/hub/" ||
+    path === "/hub.html" ||
+    path.startsWith("/hub/beta");
+  if (isHubSurface) return;
   if (readLocalStorage(COMPLIANCE_KEYS.zeroTrackingBannerDismissed) === "1") return;
   if (qs("[data-zero-tracking-banner]")) return;
   if (!document.body) return;

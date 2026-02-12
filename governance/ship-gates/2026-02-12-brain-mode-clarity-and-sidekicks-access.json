@@ -1,0 +1,92 @@
+{
+  "feature_id": "2026-02-12-brain-mode-clarity-and-sidekicks-access",
+  "feature_name": "Brain mode clarity and sidekicks access",
+  "owner": "Codex",
+  "date": "2026-02-12",
+  "scope_summary": "Make Brain Mode explicit as Creative/Analytical, preserve legacy sprint values, expose direct Sidekicks entry links, and prevent the fixed zero-tracking banner from hiding Sidekicks controls on Hub surfaces.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "n_a",
+      "rationale": "UI discoverability and label updates only; no new legal processing or data handling paths.",
+      "evidence": []
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "Change reduces UI obstruction by skipping the zero-tracking banner on Hub app surfaces without adding new off-device data flows.",
+      "evidence": [
+        "assets/site.js renderZeroTrackingBanner skips /hub and /hub/beta paths",
+        "No storage keys or network request logic added"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No new medical or clinical claim text added in this patch.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Improves clarity and lowers cognitive friction by naming the active brain mode and giving a direct path to Sidekicks selection.",
+      "evidence": [
+        "partials/header.html now displays dynamic Brain Mode label",
+        "hub.html adds explicit Open Sidekicks action"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Supports user-choice and state-matching principles by making mode state visible and Sidekicks easier to access.",
+      "evidence": [
+        "assets/site.js formatBrainMode updates on-screen mode label",
+        "hub/beta/index.html nav now includes Sidekicks route"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Primary benefit is reduced confusion and fewer hidden controls; risk is low because behavior changes are limited to presentation and navigation.",
+      "evidence": [
+        "Legacy mode alias maps sprint -> creative to avoid state breakage",
+        "No destructive migrations or data writes introduced"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "Copy remains plain, direct, and non-coercive while using existing Divergify terminology for mode and sidekicks.",
+      "evidence": [
+        "Hub copy explicitly points users to Sidekicks selection",
+        "Brain Mode label now uses user-facing Creative/Analytical language"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Improves orientation with explicit mode text and a direct nav path to Sidekicks for keyboard and low-context users.",
+      "evidence": [
+        "hub/beta/index.html adds Sidekicks nav link",
+        "Header label updates in text without requiring icon interpretation"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Runtime remains stable with node syntax checks and no new remote scripts or elevated permissions.",
+      "evidence": [
+        "node --check assets/site.js passes",
+        "No credential, auth, or backend changes in this patch"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No pricing, payment, or monetization interaction was added or changed.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship as UX clarity and discoverability fix; monitor for any Hub path regressions."
+  }
+}
