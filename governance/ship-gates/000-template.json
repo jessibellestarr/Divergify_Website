@@ -1,0 +1,71 @@
+{
+  "feature_id": "YYYY-MM-DD-feature-slug",
+  "feature_name": "Feature name",
+  "owner": "Owner name",
+  "date": "2026-02-12",
+  "scope_summary": "Describe the exact user-facing change and why it is beneficial.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": true,
+    "health_related_context": true,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "blocked",
+      "rationale": "List applicable laws and notices.",
+      "evidence": []
+    },
+    "privacy_local_first_promise": {
+      "status": "blocked",
+      "rationale": "Confirm explicit consent and no silent exfiltration.",
+      "evidence": []
+    },
+    "medical_scope_and_claims": {
+      "status": "blocked",
+      "rationale": "Confirm no diagnosis/treatment claims and proper disclaimers.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "blocked",
+      "rationale": "Confirm the feature reduces friction without coercion.",
+      "evidence": []
+    },
+    "neurodivergence_research_alignment": {
+      "status": "blocked",
+      "rationale": "Confirm assumptions are consistent with available ND research.",
+      "evidence": []
+    },
+    "user_benefit_and_harm_check": {
+      "status": "blocked",
+      "rationale": "Confirm expected benefit outweighs foreseeable harm.",
+      "evidence": []
+    },
+    "brand_voice_and_claims": {
+      "status": "blocked",
+      "rationale": "Confirm messaging is on-brand and non-manipulative.",
+      "evidence": []
+    },
+    "accessibility_and_inclusion": {
+      "status": "blocked",
+      "rationale": "Confirm readability, keyboard use, and low-cognitive-load behavior.",
+      "evidence": []
+    },
+    "security_and_reliability": {
+      "status": "blocked",
+      "rationale": "Confirm no new security regression and runtime still works.",
+      "evidence": []
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "blocked",
+      "rationale": "Confirm monetization is transparent and opt-in with no coercive UX.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": false,
+    "conditions": "Set to true only when every blocker is resolved."
+  }
+}

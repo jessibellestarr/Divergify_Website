@@ -1,0 +1,35 @@
+name: Ship Filter
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  verify-ship-filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify ship filter (pull request)
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          python3 scripts/verify_ship_filter.py --range "origin/${{ github.base_ref }}...HEAD"
+
+      - name: Verify ship filter (push)
+        if: github.event_name == 'push'
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+          if git rev-parse --verify "$BEFORE" >/dev/null 2>&1; then
+            RANGE="$BEFORE..$AFTER"
+          else
+            ROOT_COMMIT="$(git rev-list --max-parents=0 HEAD | tail -n 1)"
+            RANGE="$ROOT_COMMIT..$AFTER"
+          fi
+          python3 scripts/verify_ship_filter.py --range "$RANGE"

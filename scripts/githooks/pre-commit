@@ -5,3 +5,4 @@ ROOT="$(git rev-parse --show-toplevel)"
 
 "$ROOT/scripts/lock-field-notes.sh"
 python3 "$ROOT/scripts/verify_content_lock.py"
+python3 "$ROOT/scripts/verify_ship_filter.py"
