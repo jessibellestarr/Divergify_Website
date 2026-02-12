@@ -17,3 +17,51 @@
   to = "/field-notes/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/shop.html"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/shop"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/about/*"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/shop/*"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/about-us"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/about-us/*"
+  to = "/"
+  status = 410
+  force = true

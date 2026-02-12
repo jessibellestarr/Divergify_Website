@@ -1,0 +1,84 @@
+{
+  "feature_id": "2026-02-12-remove-deprecated-about-shop-routes",
+  "feature_name": "Remove deprecated about/shop routes",
+  "owner": "Codex",
+  "date": "2026-02-12",
+  "scope_summary": "Explicitly return 410 Gone for deprecated about/shop URL variants so dead pages are de-indexed and cannot be served by legacy or guessed paths.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "n_a",
+      "rationale": "Route-status cleanup only; no legal policy change.",
+      "evidence": []
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No new data collection or remote calls were introduced; change only hard-fails deprecated routes.",
+      "evidence": [
+        "netlify.toml adds 410 redirects for /about* and /shop*",
+        "No JavaScript storage/network code changed in this patch"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No medical language or claims were changed.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Removing dead routes reduces confusion and false affordances for users navigating support content.",
+      "evidence": [
+        "Deprecated paths now return 410 instead of ambiguous missing-page behavior"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "n_a",
+      "rationale": "No neurodivergence guidance content changed in this patch.",
+      "evidence": []
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users and crawlers get a clear signal that these pages are retired, lowering risk of broken journeys.",
+      "evidence": [
+        "netlify.toml includes explicit 410 rules for /about, /about/*, /shop, and /shop/*"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "No marketing claims changed; this is purely operational route hygiene.",
+      "evidence": [
+        "Only netlify.toml and ship gate metadata were modified"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Clear route retirement avoids users hitting stale pages that fail to provide expected navigation support.",
+      "evidence": [
+        "410 responses communicate permanent removal and prevent repeated dead-end crawling"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Route handling is deterministic and reduces accidental exposure of future placeholder paths.",
+      "evidence": [
+        "Static redirect rules are explicit and force-enabled in netlify.toml"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No payment, pricing, or conversion behavior changed.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Deploy and monitor crawl reports; submit removal in search consoles if stale URLs persist."
+  }
+}
