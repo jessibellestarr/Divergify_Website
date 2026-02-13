@@ -353,6 +353,53 @@ p { margin: 0 0 var(--space-4); }
 
 .section p { margin: 0 0 var(--space-3); }
 
+/* Mode guide ----------------------------------------------- */
+
+.mode-guide .text-muted {
+  max-width: 780px;
+}
+
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.mode-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  background: var(--color-surface);
+}
+
+.mode-item h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+.mode-item p:last-child {
+  margin-bottom: 0;
+}
+
+.install-card {
+  margin-top: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.install-steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--color-text-muted);
+  display: grid;
+  gap: var(--space-2);
+}
+
 /* Cards --------------------------------------------------- */
 
 .grid-3 {
@@ -531,6 +578,7 @@ body.mode-reduced * { transition: none !important; animation: none !important; }
   .grid-3 { grid-template-columns: 1fr; }
   .divergipedia-shell { grid-template-columns: 1fr; }
   .dp-index { position: relative; top: 0; height: auto; }
+  .mode-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1280px) {
@@ -557,18 +605,33 @@ body.mode-reduced * { transition: none !important; animation: none !important; }
   }
 
   .nav {
+    width: 100%;
     gap: var(--space-2);
+    overflow-x: auto;
+    padding-bottom: 4px;
   }
 
   .nav a {
+    flex: 0 0 auto;
     padding: 6px 8px;
     font-size: 13px;
   }
 
   .header-right {
     width: 100%;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
     margin-left: 0;
+  }
+
+  .toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
   }
 }
 

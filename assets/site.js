@@ -1,21 +1,21 @@
 /* Divergify site runtime: universal header/footer, modes, easter eggs, and Divergipedia rendering */
 
 const STORAGE_KEYS = {
-  shades: "divergify_interference",
+  shades: "divergify_shades",
   tinfoil: "divergify_tinfoil",
   logic: "divergify_brain_mode"
 };
 
 const LEGACY_STORAGE_KEYS = {
-  shades: ["divergify_mode_reduced_interference", "divergify_mode_shades"],
+  shades: ["divergify_interference", "divergify_mode_reduced_interference", "divergify_mode_shades"],
   tinfoil: ["divergify_tinfoil_hat_mode", "divergify_mode_tinfoil"],
   logic: []
 };
 
-const LOGIC_MODES = new Set(["creative", "analytical"]);
-const DEFAULT_LOGIC_MODE = "creative";
+const LOGIC_MODES = new Set(["sprint", "analytical"]);
+const DEFAULT_LOGIC_MODE = "sprint";
 const LOGIC_MODE_ALIASES = {
-  sprint: "creative"
+  creative: "sprint"
 };
 
 const COMPLIANCE_KEYS = {
@@ -58,7 +58,7 @@ const INLINE_HEADER_PARTIAL = `
         <button class="switch" type="button" role="switch" aria-checked="false" data-switch="shades" data-on="false"></button>
       </div>
       <div class="toggle">
-        <span data-brain-mode-label>Brain Mode: Creative</span>
+        <span data-brain-mode-label>Brain Mode: Sprint</span>
         <button class="switch" type="button" role="switch" aria-checked="false" data-switch="logic" data-on="false"></button>
       </div>
     </div>
@@ -183,7 +183,7 @@ function normalizeLogicMode(value) {
 }
 
 function formatBrainMode(mode) {
-  return mode === "analytical" ? "Analytical" : "Creative";
+  return mode === "analytical" ? "Analytical" : "Sprint";
 }
 
 function getMode(key) {
@@ -257,10 +257,10 @@ function applyModesFromStorage() {
 
 function updateTakotaSpeech(energy, mode, element) {
   const scripts = {
-    creative: {
-      low: "Creative battery is low. Keep it tiny and gentle.",
-      mid: "Creative mode stable. Start with one visible anchor task.",
-      high: "Creative surge detected. Channel that momentum into one useful outcome."
+    sprint: {
+      low: "Sprint energy is low. Keep it tiny and gentle.",
+      mid: "Sprint mode stable. Start with one visible anchor task.",
+      high: "Sprint surge detected. Channel that momentum into one useful outcome."
     },
     analytical: {
       low: "Energy reserves <30%. Priority: Sensory regulation. Suspend high-load tasks.",
@@ -282,7 +282,7 @@ function bindSwitches() {
 
       if (switchType === "logic") {
         const current = getMode(STORAGE_KEYS.logic);
-        const next = current === "creative" ? "analytical" : "creative";
+        const next = current === "sprint" ? "analytical" : "sprint";
         setMode(STORAGE_KEYS.logic, next);
         return;
       }

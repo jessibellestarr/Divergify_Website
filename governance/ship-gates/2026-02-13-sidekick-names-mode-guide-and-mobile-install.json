@@ -1,0 +1,92 @@
+{
+  "feature_id": "2026-02-13-sidekick-names-mode-guide-and-mobile-install",
+  "feature_name": "Sidekick naming, mode clarity, and mobile install guidance",
+  "owner": "Codex",
+  "date": "2026-02-13",
+  "scope_summary": "Restore human-readable sidekick names in Hub beta, move privacy emphasis to app header by removing duplicate footer privacy link, align website mode keys/naming to Shades + Sprint/Analytical, add homepage explanations for header toggles, and improve mobile header layout and install guidance.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "n_a",
+      "rationale": "No legal policy language or data processing scope changed.",
+      "evidence": []
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "Changes keep local-first behavior intact and reduce duplicate/privacy-link confusion without adding any new data flows.",
+      "evidence": [
+        "hub/beta/index.html footer privacy link removed",
+        "assets/site.js preserves localStorage-only mode state handling"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No diagnostic/treatment claims introduced.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "UI copy now explains modes directly, reducing cognitive overhead for first-time users.",
+      "evidence": [
+        "index.html adds 'What The Header Toggles Do' section",
+        "assets/global.css adds readable mode-guide cards and mobile-friendly toggle layout"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Supports state-matching and user autonomy with explicit Sprint/Analytical and low-stim/privacy controls.",
+      "evidence": [
+        "assets/site.js brain mode label and storage normalization updated",
+        "partials/header.html reflects Brain Mode: Sprint baseline"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Primary benefit is discoverability and lower confusion; risk is low because behavior is copy/layout/state-key normalization.",
+      "evidence": [
+        "Hub beta rebuilt with sidekick names: Rick, Aria, Aster, Soren",
+        "Legacy shades/brain aliases retained to avoid breaking prior local settings"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "Copy remains direct, plain-language, and avoids manipulative framing.",
+      "evidence": [
+        "index.html mode guide copy",
+        "hub.html mobile install instructions"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Mobile toggle layout now avoids cramped controls and improves readability for smaller screens.",
+      "evidence": [
+        "assets/global.css adds stacked mobile toggle cards at <=720px",
+        "mode guide section gives explicit meanings instead of relying on insider terms"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Hub build sync is now deterministic with corrected asset extraction regex; no privileged logic added.",
+      "evidence": [
+        "scripts/build_app_into_site.sh extraction regex corrected",
+        "hub.html app-inline asset block updated to current built hashes"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No pricing/payment flow changes in this patch.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship as UX clarity and mobile-readiness patch; validate /hub/beta onboarding labels after deploy."
+  }
+}
