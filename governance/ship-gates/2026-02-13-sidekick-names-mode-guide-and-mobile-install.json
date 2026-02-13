@@ -3,7 +3,7 @@
   "feature_name": "Sidekick naming, mode clarity, and mobile install guidance",
   "owner": "Codex",
   "date": "2026-02-13",
-  "scope_summary": "Restore human-readable sidekick names in Hub beta, move privacy emphasis to app header by removing duplicate footer privacy link, align website mode keys/naming to Shades + Sprint/Analytical, add homepage explanations for header toggles, and improve mobile header layout and install guidance.",
+  "scope_summary": "Restore plain human sidekick names in Hub beta, add an in-app Guide route with FAQ, publish a dedicated website Guide page, align website mode keys/naming to Shades + Sprint/Analytical, and improve mobile header/install discoverability.",
   "risk_level": "low",
   "touches": {
     "user_data": false,
@@ -36,7 +36,8 @@
       "rationale": "UI copy now explains modes directly, reducing cognitive overhead for first-time users.",
       "evidence": [
         "index.html adds 'What The Header Toggles Do' section",
-        "assets/global.css adds readable mode-guide cards and mobile-friendly toggle layout"
+        "guide.html adds dedicated quick-start + FAQ content",
+        "hub/beta app includes /guide route for in-context help"
       ]
     },
     "neurodivergence_research_alignment": {
@@ -51,7 +52,7 @@
       "status": "pass",
       "rationale": "Primary benefit is discoverability and lower confusion; risk is low because behavior is copy/layout/state-key normalization.",
       "evidence": [
-        "Hub beta rebuilt with sidekick names: Rick, Aria, Aster, Soren",
+        "Hub beta rebuilt with sidekick names: Avery, Rick, Aria, Aster, Soren",
         "Legacy shades/brain aliases retained to avoid breaking prior local settings"
       ]
     },
@@ -59,6 +60,7 @@
       "status": "pass",
       "rationale": "Copy remains direct, plain-language, and avoids manipulative framing.",
       "evidence": [
+        "guide.html plain-language FAQ and quick-start instructions",
         "index.html mode guide copy",
         "hub.html mobile install instructions"
       ]
@@ -68,7 +70,8 @@
       "rationale": "Mobile toggle layout now avoids cramped controls and improves readability for smaller screens.",
       "evidence": [
         "assets/global.css adds stacked mobile toggle cards at <=720px",
-        "mode guide section gives explicit meanings instead of relying on insider terms"
+        "mode guide section gives explicit meanings instead of relying on insider terms",
+        "header nav now links directly to guide.html from all pages"
       ]
     },
     "security_and_reliability": {

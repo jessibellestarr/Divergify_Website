@@ -43,6 +43,7 @@ const INLINE_HEADER_PARTIAL = `
     <nav class="nav" aria-label="Primary">
       <a href="/">Divergify</a>
       <a href="/hub">The Hub</a>
+      <a href="/guide.html">Guide</a>
       <a href="/field-notes.html">Field Notes</a>
       <a href="/dopamine-depot.html">Dopamine Depot</a>
       <a href="/divergipedia.html">Divergipedia</a>
