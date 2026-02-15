@@ -8,14 +8,26 @@
 
 [[redirects]]
   from = "/blog/"
-  to = "/field-notes/"
-  status = 301
+  to = "/"
+  status = 410
   force = true
 
 [[redirects]]
   from = "/blog/*"
-  to = "/field-notes/:splat"
-  status = 301
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/"
+  status = 410
   force = true
 
 [[redirects]]
