@@ -23,15 +23,21 @@ const COMPLIANCE_KEYS = {
 };
 
 const EASTER_EGGS = [
-  "Reality check: your brain is not broken. Your environment is.",
-  "Tin Foil Hat Mode: because consent is not a vibe, it is a rule.",
-  "If you felt called out by the word 'friction,' that is data.",
-  "Divergipedia entry unlocked: 'Procrastination' is often threat detection in a trench coat.",
-  "We do not do shame loops here. Take that to a different website.",
-  "Calm UI, sharp intent. Yes, both can exist at the same time.",
-  "If you are waiting for permission, you are outsourcing agency again.",
-  "This footer rotates so your brain gets a tiny novelty hit. You are welcome."
+  "Your to-do list is ambitious. Your nervous system filed an appeal.",
+  "Productivity tip: drink water before you emotionally unionize against your inbox.",
+  "Shame is not a feature. We checked the roadmap twice.",
+  "If your brain opened 14 tabs, congratulations, that is parallel processing.",
+  "Reminder: existing while neurodivergent already counts as advanced operations.",
+  "This app believes in tiny steps and dramatic comebacks.",
+  "Doom scrolling is not research. Nice try though.",
+  "Executive dysfunction is not laziness in a fake mustache.",
+  "Tin Foil Hat Mode: for when your trust issues are fact-based.",
+  "If you got distracted mid-task, welcome to the human speedrun."
 ];
+
+let easterEggLastIndex = -1;
+let easterEggRotationTimer = null;
+let easterEggHandlersBound = false;
 
 const INLINE_HEADER_PARTIAL = `
 <a class="skip-link" href="#main">Skip to content</a>
@@ -43,9 +49,9 @@ const INLINE_HEADER_PARTIAL = `
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="/">Divergify</a>
-      <a href="/hub">The Hub</a>
+      <a href="/hub.html">The Hub</a>
       <a href="/guide.html">Guide</a>
-      <a href="/field-notes.html">Field Notes</a>
+      <a href="/field-notes/">Field Notes</a>
       <a href="/dopamine-depot.html">Dopamine Depot</a>
       <a href="/divergipedia.html">Divergipedia</a>
       <a href="/contact.html">Contact</a>
@@ -447,8 +453,32 @@ function setActiveNav() {
 function setFooterEasterEgg() {
   const el = qs("[data-easter-egg]");
   if (!el) return;
-  const line = EASTER_EGGS[Math.floor(Math.random() * EASTER_EGGS.length)];
-  el.textContent = line;
+  if (!EASTER_EGGS.length) return;
+
+  let nextIndex = 0;
+  if (EASTER_EGGS.length === 1) {
+    nextIndex = 0;
+  } else {
+    do {
+      nextIndex = Math.floor(Math.random() * EASTER_EGGS.length);
+    } while (nextIndex === easterEggLastIndex);
+  }
+
+  easterEggLastIndex = nextIndex;
+  el.textContent = EASTER_EGGS[nextIndex];
+
+  if (easterEggRotationTimer === null) {
+    easterEggRotationTimer = window.setInterval(() => {
+      if (!document.hidden) setFooterEasterEgg();
+    }, 12000);
+  }
+
+  if (!easterEggHandlersBound) {
+    const rotate = () => setFooterEasterEgg();
+    document.addEventListener("visibilitychange", rotate);
+    window.addEventListener("focus", rotate);
+    easterEggHandlersBound = true;
+  }
 }
 
 function ensureFieldNotesStyles() {

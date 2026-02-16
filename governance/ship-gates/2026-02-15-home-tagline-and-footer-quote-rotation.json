@@ -1,0 +1,89 @@
+{
+  "feature_id": "2026-02-15-home-tagline-and-footer-quote-rotation",
+  "feature_name": "Homepage tagline update and rotating funny footer quotes",
+  "owner": "Codex",
+  "date": "2026-02-15",
+  "scope_summary": "Set the homepage lead tagline to the requested copy, reduce prominence of the secondary hero line, and make footer quotes rotate with humor on tab changes and timed intervals.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "n_a",
+      "rationale": "Copy and UI behavior update only; no legal-policy surface changed.",
+      "evidence": []
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No data flow or storage scope changed; footer rotation is local DOM text behavior only.",
+      "evidence": [
+        "assets/site.js updates only EASTER_EGGS strings and client-side event listeners",
+        "No new fetch endpoints, trackers, or integrations added"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No new medical claims or scope changes were introduced.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Simplifying hero messaging reduces cognitive load and rotating novelty text supports engagement without pressure loops.",
+      "evidence": [
+        "index.html removes louder secondary hero tagline line",
+        "assets/site.js rotates footer quotes on visibility and focus events"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "n_a",
+      "rationale": "No neurodivergence research claims were changed in this patch.",
+      "evidence": []
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users get clearer positioning and livelier footer behavior with negligible risk.",
+      "evidence": [
+        "Homepage lead message now matches requested tagline exactly",
+        "Footer no longer repeats one static quote across long sessions"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "Updated lines stay aligned to direct, playful brand voice without manipulative phrasing.",
+      "evidence": [
+        "EASTER_EGGS list replaced with intentionally humorous one-liners",
+        "Hero copy remains concise and mission-consistent"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Shorter hero stack is easier to scan, and quote updates are non-blocking text changes.",
+      "evidence": [
+        "index.html de-emphasizes secondary hero line via smaller muted text",
+        "No keyboard traps or focus behavior regressions introduced"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "JavaScript syntax validated; rotation logic avoids immediate repeat and initializes once.",
+      "evidence": [
+        "node --check assets/site.js passes",
+        "setFooterEasterEgg guards against duplicate handlers/timers"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No pricing, upsell, or conversion flow changes were made.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship and visually verify homepage hero and footer quote rotation by switching browser tabs at least twice."
+  }
+}
