@@ -1,0 +1,86 @@
+{
+  "feature_id": "2026-02-17-hub-dropdown-option-legibility",
+  "feature_name": "Hub beta dropdown option text legibility fix",
+  "owner": "Codex",
+  "date": "2026-02-17",
+  "scope_summary": "Improve native select-menu readability in Hub beta by setting explicit high-contrast text and background colors for dropdown option rows, so humor/personality selections are legible on dark-themed UIs.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "n_a",
+      "rationale": "Pure visual contrast fix with no policy, consent, or legal-surface changes.",
+      "evidence": []
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "Only CSS presentation changed; no storage, tracking, or network behavior changed.",
+      "evidence": [
+        "Updated only hub/beta/assets/index-DUd83ILR.css",
+        "No JavaScript logic or request endpoints were modified"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No claim-language or medical-context copy changed.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Increasing option readability reduces cognitive friction and selection errors for users configuring tone and support preferences.",
+      "evidence": [
+        "Added .select option color #1b1938 on background #f9eed2",
+        "Fix targets the exact unreadable dropdown state reported by user screenshot"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "n_a",
+      "rationale": "No new neurodivergence claims were introduced.",
+      "evidence": []
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Benefit is immediate readability and lower mis-selection risk; foreseeable harm is minimal because only option-row paint colors changed.",
+      "evidence": [
+        "Selected option remains unchanged while menu rows gain contrast",
+        "No workflow or content semantics changed"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "n_a",
+      "rationale": "Brand messaging and product claims were unchanged.",
+      "evidence": []
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Explicit high-contrast option styling directly addresses low-legibility text in native dropdown menus.",
+      "evidence": [
+        "Options now render dark text on light background in the expanded list",
+        "Improves readability for low-vision and low-stim users"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Static CSS change only; no runtime state, routing, or security boundary changes.",
+      "evidence": [
+        "No script bundle changes required for this fix",
+        "Ship filter and existing CI workflows remain green"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No pricing, purchase flow, or behavioral monetization changes.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship and verify the Humor dropdown options are readable in the expanded menu on dark theme backgrounds."
+  }
+}
