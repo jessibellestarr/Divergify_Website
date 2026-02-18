@@ -1,0 +1,91 @@
+{
+  "feature_id": "2026-02-18-autopilot-source-stamp-refresh",
+  "feature_name": "Autopilot source stamp refresh deploy",
+  "owner": "Codex",
+  "date": "2026-02-18",
+  "scope_summary": "Rebuild and redeploy Hub Beta Autopilot bundle after source commit so in-app build stamp matches the exact shipped source hash.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "No policy or regulatory scope changes; deploy metadata correction only.",
+      "evidence": [
+        "No legal copy or claims changed",
+        "Only built assets and stamp value changed"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No storage or network behavior changes.",
+      "evidence": [
+        "No new endpoints added",
+        "On-device data handling unchanged"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No medical content changes.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Improves trust by aligning visible build identity with shipped behavior implementation.",
+      "evidence": [
+        "Build stamp now reflects current source commit"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "User trust improves when version provenance is transparent and accurate.",
+      "evidence": [
+        "In-app build value matches source repo commit"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Removes ambiguity about what code is deployed with no user-facing behavior loss.",
+      "evidence": [
+        "Updated JS bundle with corrected stamp"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "No brand tone or claim changes.",
+      "evidence": [
+        "User-facing copy strings are unchanged except build stamp value",
+        "No new claims introduced in the UI text"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "No interaction or layout changes.",
+      "evidence": [
+        "No new controls were added or removed",
+        "Existing keyboard and responsive behavior remains unchanged"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Source provenance display is now accurate for troubleshooting and rollback decisions.",
+      "evidence": [
+        "Build stamp now equals source commit short hash"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No monetization changes.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship and verify live hub beta bundle exposes build stamp 8213d3c."
+  }
+}
