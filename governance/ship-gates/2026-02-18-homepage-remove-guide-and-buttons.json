@@ -1,0 +1,89 @@
+{
+  "feature_id": "2026-02-18-homepage-remove-guide-and-buttons",
+  "feature_name": "Remove homepage quick guide and CTA button cluster",
+  "owner": "Codex",
+  "date": "2026-02-18",
+  "scope_summary": "Remove the Quick guide section on the main homepage including guide/toggle explainer copy and the two call-to-action buttons so the page returns to a simpler level-one presentation.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "Pure homepage content/layout removal with no legal policy or data-collection scope changes.",
+      "evidence": [
+        "Only index.html changed",
+        "No policy/legal documents modified"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No data handling behavior changed by this homepage content removal.",
+      "evidence": [
+        "No scripts, storage, or API behavior changes introduced"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No medical claims were added or expanded.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "This change reduces top-level cognitive load by removing optional control documentation from homepage view.",
+      "evidence": [
+        "Quick guide explainer module removed from index page"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Simplifying initial landing content can reduce overwhelm for users who only need the level-one page entry experience.",
+      "evidence": [
+        "Install/guide/button cluster removed from homepage flow"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users get a cleaner homepage with less clutter; downside is only reduced immediate discoverability for guide links.",
+      "evidence": [
+        "Guide and hub CTA buttons removed from index page"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "The remaining homepage voice stays consistent and less noisy while preserving core brand framing.",
+      "evidence": [
+        "No new claims added",
+        "Change is subtraction of optional guidance block"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Removing non-essential elements reduces scan complexity on the landing page.",
+      "evidence": [
+        "Large multi-card guide block no longer competes with primary sections"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Static HTML-only adjustment with no runtime risk introduced.",
+      "evidence": [
+        "No JavaScript or routing changes made"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No monetization behavior affected.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Deploy and verify homepage no longer shows Quick guide or guide/open-hub button block."
+  }
+}
