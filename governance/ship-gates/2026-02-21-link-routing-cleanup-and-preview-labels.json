@@ -1,0 +1,92 @@
+{
+  "feature_id": "2026-02-21-link-routing-cleanup-and-preview-labels",
+  "feature_name": "Link routing cleanup and preview-only labels",
+  "owner": "Codex",
+  "date": "2026-02-21",
+  "scope_summary": "Normalize old app entry links to the current preview URL, add missing clean redirects for hub/app-build variants, and update copy labels to consistently say preview instead of live app.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "Changes reduce ambiguous route behavior and remove misleading live-app wording.",
+      "evidence": [
+        "app-build page language now labels environment as preview/in-development",
+        "No policy, terms, or legal obligations changed"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No data collection or storage behavior changed.",
+      "evidence": [
+        "Only static links/copy and redirect rules updated"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "No medical claims were added or modified.",
+      "evidence": [
+        "No treatment/diagnosis language changes"
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Direct routes reduce cognitive load and confusion during navigation.",
+      "evidence": [
+        "Old /app/* now resolves directly to /hub/beta/",
+        "Guide and app-build CTA labels align with preview status"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Predictable, explicit routing and naming improves trust and wayfinding.",
+      "evidence": [
+        "Added direct redirects for /hub-beta and /app-build"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users hit fewer stale routes and less misleading language, with no feature loss.",
+      "evidence": [
+        "Internal link checks pass for touched pages",
+        "No broken targets introduced by redirect updates"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "Wording now stays accurate about preview status and avoids false promises.",
+      "evidence": [
+        "Guide/app-build now use preview language"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Cleaner routes and consistent labels reduce unexpected context changes.",
+      "evidence": [
+        "Fewer redirect hops from legacy app links"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Only routing and content labels changed; no executable logic risk increase.",
+      "evidence": [
+        "No new script runtime or dependency changes"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No pricing, checkout, or paywall changes.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Deploy and verify /app/* resolves to /hub/beta/, and check guide/app-build CTA text/routes are consistent with preview messaging."
+  }
+}

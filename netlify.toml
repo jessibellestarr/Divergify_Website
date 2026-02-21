@@ -3,8 +3,20 @@
 
 [[redirects]]
   from = "/app/*"
-  to = "/hub.html"
+  to = "/hub/beta/"
   status = 301
+
+[[redirects]]
+  from = "/app-build"
+  to = "/app-build.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hub-beta"
+  to = "/hub-beta.html"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/hub"
