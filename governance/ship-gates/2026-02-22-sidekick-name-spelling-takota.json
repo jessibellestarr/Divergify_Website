@@ -1,0 +1,89 @@
+{
+  "feature_id": "2026-02-22-sidekick-name-spelling-takota",
+  "feature_name": "Sidekick name spelling normalization to TAKOTA",
+  "owner": "Codex",
+  "date": "2026-02-22",
+  "scope_summary": "Normalize visible sidekick spelling from Takoda/Tacoma/Dakota to TAKOTA in user-facing copy and comments.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "This is a naming consistency correction with no policy or legal impact.",
+      "evidence": [
+        "Only spelling normalization in visible text"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No storage, telemetry, or user data handling changed.",
+      "evidence": [
+        "No data paths or keys were altered"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "No medical guidance, diagnosis, or treatment claims were touched.",
+      "evidence": [
+        "Change is limited to sidekick name spelling"
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Consistent naming reduces confusion and cognitive overhead.",
+      "evidence": [
+        "A single canonical sidekick label is now used"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Clear, stable naming supports predictable navigation and understanding.",
+      "evidence": [
+        "Removed variant spellings of the same sidekick identity"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users see cleaner, consistent branding with negligible risk.",
+      "evidence": [
+        "No behavior or workflow changes"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "Standardizing the sidekick label improves brand consistency.",
+      "evidence": [
+        "TAKOTA now used consistently in touched copy"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Consistency in labels aids comprehension and orientation.",
+      "evidence": [
+        "Removed conflicting name variants"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "No executable logic, dependencies, or security controls changed.",
+      "evidence": [
+        "Static text/comment updates only"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No pricing, checkout, upsell, or conversion funnel change.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Verify no occurrences of Takoda/Tacoma/Dakota remain in the repo."
+  }
+}
