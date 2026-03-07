@@ -1,0 +1,100 @@
+{
+  "feature_id": "2026-03-07-publish-calendar-board-day-week-drag-build-to-hub-beta",
+  "feature_name": "Publish calendar board day-week drag build to hub beta",
+  "owner": "Codex",
+  "date": "2026-03-07",
+  "scope_summary": "Publishes a new hub beta app build that adds a day/week calendar board with drag-based task scheduling and wires calendar entry points into Today/Tasks navigation.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": true,
+    "health_related_context": true,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "Feature remains within productivity tooling scope and legal disclosures continue to be accessible.",
+      "evidence": [
+        "No regulated medical feature was introduced",
+        "Existing legal/privacy routes remain available in the app shell"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "Scheduling changes stay local-first and do not introduce new network data flow.",
+      "evidence": [
+        "Calendar scheduling writes to the existing local task store",
+        "No new API endpoints or third-party SDK integrations were added"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "Copy remains behavioral/productivity-focused with no diagnosis or treatment claims.",
+      "evidence": [
+        "Calendar feature copy references planning and task flow only"
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Visual day/week placement plus drag rescheduling reduces friction for next-action planning.",
+      "evidence": [
+        "Users can drag tasks between days instead of editing dates in forms",
+        "Unscheduled inbox drop zone supports low-friction date clearing"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "The board supports chunking and temporal scaffolding without increasing cognitive overload.",
+      "evidence": [
+        "Day/week modes allow reduced information density",
+        "Today/Tasks links to calendar keep the anchor-task workflow intact"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users gain a direct scheduling surface and can quickly rebalance workload without losing tasks.",
+      "evidence": [
+        "Calendar route includes drag scheduling and unschedule drop zone",
+        "Automated tests and build passed before publish"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "UI copy keeps direct, non-manipulative Divergify voice and avoids exaggerated outcomes.",
+      "evidence": [
+        "Route labels and helper text remain operational and plain-language",
+        "No marketing claims were introduced by this build"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Calendar includes button-based fallback actions alongside drag interactions for broader access.",
+      "evidence": [
+        "Tasks can be scheduled with explicit buttons, not drag only",
+        "Navigation exposes calendar from tabs and planner actions"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Build artifacts were regenerated from typed source and validated with tests/build checks.",
+      "evidence": [
+        "vitest run passed (4/4 tests)",
+        "TypeScript + Vite production build completed successfully"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "pass",
+      "rationale": "No monetization mechanics were added and no coercive prompts were introduced.",
+      "evidence": [
+        "Calendar release only updates planner functionality and navigation",
+        "No purchase/paywall/upsell UI or conversion logic changed"
+      ]
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Deploy and verify /hub/beta loads with the new /calendar route and drag scheduling flow."
+  }
+}
