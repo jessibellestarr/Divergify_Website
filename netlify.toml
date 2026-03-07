@@ -48,12 +48,6 @@
   force = true
 
 [[redirects]]
-  from = "/field-notes/living-slightly-out-of-sync"
-  to = "/field-notes/living-slightly-out-of-sync/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/field-notes/living-slightly-out-of-sync/index.html"
   to = "/field-notes/living-slightly-out-of-sync/"
   status = 301

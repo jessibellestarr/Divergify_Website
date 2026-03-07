@@ -1,0 +1,86 @@
+{
+  "feature_id": "2026-03-07-fix-living-slightly-out-of-sync-redirect-loop",
+  "feature_name": "Fix living-slightly-out-of-sync redirect loop",
+  "owner": "Codex",
+  "date": "2026-03-07",
+  "scope_summary": "Remove the forced redirect from /field-notes/living-slightly-out-of-sync to /field-notes/living-slightly-out-of-sync/ that was causing a self-redirect loop on the live site.",
+  "risk_level": "low",
+  "touches": {
+    "user_data": false,
+    "health_related_context": false,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "Routing-only infrastructure fix with no policy or legal-surface changes.",
+      "evidence": [
+        "Only netlify.toml redirect configuration changed"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No user-data collection, storage, or transmission behavior changed.",
+      "evidence": [
+        "No backend or analytics code changes",
+        "No cookies/session/auth handling changes"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "n_a",
+      "rationale": "No medical content or claims were modified.",
+      "evidence": []
+    },
+    "behavioral_science_alignment": {
+      "status": "n_a",
+      "rationale": "No behavior-design or persuasion flow changed.",
+      "evidence": []
+    },
+    "neurodivergence_research_alignment": {
+      "status": "n_a",
+      "rationale": "No research claims or ND content changed; routing fix only.",
+      "evidence": []
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users can access the Field Note page instead of getting stuck in repeated redirects.",
+      "evidence": [
+        "Live verification showed repeated 301 responses for /field-notes/living-slightly-out-of-sync/",
+        "Local Netlify simulation after fix returns HTTP 200 for /field-notes/living-slightly-out-of-sync/"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "No copy, claims, or messaging were modified.",
+      "evidence": [
+        "No HTML prose changes",
+        "Only routing configuration changed"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Fix restores access to the content URL and removes a blocking navigation failure.",
+      "evidence": [
+        "Canonical article route no longer loops in local Netlify simulation"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Redirect graph is simplified by removing a self-referential forced rule.",
+      "evidence": [
+        "Deleted the forced redirect rule for /field-notes/living-slightly-out-of-sync"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "n_a",
+      "rationale": "No monetization surface involved.",
+      "evidence": []
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Deploy and verify https://divergify.app/field-notes/living-slightly-out-of-sync/ returns HTTP 200."
+  }
+}
