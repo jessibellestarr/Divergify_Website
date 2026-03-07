@@ -1,0 +1,101 @@
+{
+  "feature_id": "2026-03-07-ticktick-flow-scaffold-beta-build",
+  "feature_name": "TickTick-style flow scaffold beta build update",
+  "owner": "Divergify Team",
+  "date": "2026-03-07",
+  "scope_summary": "Updates the hub beta app build to include onboarding-to-kickoff flow, planner scaffolding, and clearer next-step navigation for users.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": true,
+    "health_related_context": true,
+    "third_party_network": false,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "No new regulatory data category is introduced and existing disclosures remain visible in-app.",
+      "evidence": [
+        "Legal routes remain available under /legal/privacy and /legal/terms.",
+        "No monetization or payment handling was introduced in this release."
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "The flow changes are client-side and maintain local-first storage behavior without silent data exfiltration.",
+      "evidence": [
+        "State is persisted through existing local storage app data model.",
+        "No new external API calls were added in hub beta route updates."
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "The update keeps productivity framing and does not add diagnostic or treatment claims.",
+      "evidence": [
+        "Current UI retains non-medical disclaimer language.",
+        "Kickoff flow wording focuses on task execution and planning support."
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "The flow reduces choice overload through explicit next-step sequencing and anchor-task guidance.",
+      "evidence": [
+        "Kickoff checklist enforces a small ordered setup path.",
+        "Today view surfaces a single next-step recommendation."
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Overwhelm-based pacing is preserved so task load scales with user-reported capacity.",
+      "evidence": [
+        "Daily task cap logic remains coupled to check-in overwhelm value.",
+        "Anchor-task prioritization avoids multi-task overload by default."
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users gain a clearer path from onboarding to action while preserving existing controls and exits.",
+      "evidence": [
+        "Kickoff completion allows immediate entry to normal app routing.",
+        "Users can still skip kickoff and continue to core planner pages."
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "Language remains direct and supportive with no manipulative urgency or exaggerated outcomes.",
+      "evidence": [
+        "Guide and kickoff content use plain-language operational instructions.",
+        "No promise of medical or guaranteed performance outcomes was added."
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "New screens use existing accessible controls, semantic lists, and keyboard-friendly interactions.",
+      "evidence": [
+        "Checklist and feature cards reuse button/link components with clear labels.",
+        "Existing reduced-motion and low-stim toggles continue to function."
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Build artifacts were regenerated from typed source and validated with test/build pipeline checks.",
+      "evidence": [
+        "TypeScript build completed without errors before publishing hub beta assets.",
+        "Vitest suite passed for session state behavior."
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "pass",
+      "rationale": "No monetization UI or coercive prompts were added in this flow update.",
+      "evidence": [
+        "Kickoff flow only guides setup actions for planning and focus.",
+        "No paywalls, upsells, or hidden conversion mechanics were introduced."
+      ]
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Release on branch for testing and monitor onboarding completion and task-start behavior."
+  }
+}
