@@ -81,7 +81,6 @@ const INLINE_FOOTER_PARTIAL = `
       <div class="footer-links footer-actions">
         <a href="https://www.facebook.com/profile.php?id=61579035562612" rel="noopener" target="_blank">Facebook</a>
         <a href="https://www.instagram.com/divergify.app/" rel="noopener" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@divergify.app" rel="noopener" target="_blank">TikTok</a>
         <a href="mailto:chaoscontrol@divergify.app">Email</a>
       </div>
       <div class="footer-links footer-actions footer-tipjar">

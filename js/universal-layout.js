@@ -169,7 +169,6 @@
     const socialMap = {
       facebook: "https://www.facebook.com/",
       instagram: "https://www.instagram.com/divergify.app/",
-      tiktok: "https://www.tiktok.com/@divergify.app",
     };
 
     Object.keys(socialMap).forEach((k) => {

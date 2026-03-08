@@ -1,6 +1,6 @@
 {
-  "feature_id": "2026-03-07-ticktick-flow-scaffold-beta-build",
-  "feature_name": "TickTick-style adaptive onboarding scaffold beta build update",
+  "feature_id": "2026-03-07-flow-scaffold-beta-build",
+  "feature_name": "Adaptive onboarding scaffold beta build update",
   "owner": "Divergify Team",
   "date": "2026-03-07",
   "scope_summary": "Updates the hub beta app build to include adaptive onboarding intake (goal, overwhelm, anchor task), onboarding-to-kickoff flow, planner scaffolding, and clearer next-step navigation for users.",

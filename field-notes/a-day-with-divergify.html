@@ -86,7 +86,7 @@
             <!-- Social Share Bar (Auto-Generated Links) -->
             <div class="flex flex-wrap items-center gap-3 text-sm font-medium text-gray-500 mt-6">
                 
-                <!-- Native Share (Mobile Only - TikTok/Insta) -->
+                <!-- Native Share (Mobile Only) -->
                 <button id="share-native" onclick="nativeShare()" class="flex items-center gap-2 text-white bg-black hover:bg-gray-800 transition p-2 px-4 rounded-full shadow-sm font-bold">
                     <i class="fa-solid fa-arrow-up-from-bracket"></i> Share to Apps
                 </button>
@@ -182,7 +182,7 @@
             }
         });
 
-        // Native Share Function (Triggers TikTok/Insta menu on phones)
+        // Native Share Function (Triggers app share menu on phones)
         async function nativeShare() {
             if (navigator.share) {
                 try {

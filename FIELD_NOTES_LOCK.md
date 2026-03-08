@@ -1,10 +1,10 @@
 # Field Notes Integrity Lock
-Generated on: Sun Feb 22 06:55:47 UTC 2026
+Generated on: Sun Mar  8 00:08:28 EST 2026
 
+64dcdc9c56dbbd05884883188699c96f117b2aa2ffc8525def11367c61222e0b  field-notes/demands-not-motivation/index.html
+6221b22306fbae13a4dd29bdc1b513e45df89461b4e65ae0777b881d312f16fd  field-notes/designing-without-shame/index.html
+260b3a1b242556c7c9ba1e59eb5fdaa86b95522b19a13f6fd9a921e9c96792dd  field-notes/the-spiral-bar/index.html
+c87e8d24d0ada31cd350071f84608bc2743e7881e0e4766b66ae7336bc71d335  field-notes/living-slightly-out-of-sync/index.html
+80f1be1e76f426e019e0fe8ee299fffbba2dac45c193e45d9fdf0158a5bd62bd  field-notes/healthy-momentum/index.html
 b8c70359b50e310b94c530f11dece81fabedbf5784e6f8d90e5e503396af3eca  field-notes/index.html
-b50fc8e770b51e55c92c16116c0d1f5c0dad95c9119ae166b1dc8a4e1bd1493a  field-notes/healthy-momentum/index.html
-847e7f770afcb0f233298be7f94080a17ffffb892561bcd7716dc88a1a79eebf  field-notes/living-slightly-out-of-sync/index.html
-e60d6f391907310e1437caf289f9fb6fb0e7cf9b56fa6a0bc4b06e770b508632  field-notes/the-quiet-expectation/index.html
-be1523aeba6701e34475e970e87fdb2e488d586cf518f6082e8a9e89535da450  field-notes/demands-not-motivation/index.html
-5c013c7a3d7b65af1bf93067b582dcc78960bc3b5cab60abc859d316b3fddbf0  field-notes/the-spiral-bar/index.html
-f1134b9c5792b8df265aea04c50d4adebea64d58a1a7257b71c094223c87b187  field-notes/designing-without-shame/index.html
+7c2aa18b66e276f519b562ff3570ad29fa63816376e2f901f058b7575316c63f  field-notes/the-quiet-expectation/index.html
