@@ -1,0 +1,95 @@
+{
+  "feature_id": "2026-03-09-homepage-voice-reset-and-audience-framing",
+  "feature_name": "Homepage voice reset and audience framing correction",
+  "owner": "Codex",
+  "date": "2026-03-09",
+  "scope_summary": "Replace the rewritten homepage copy with a smaller homepage that preserves the protected tagline, uses repository-sourced descriptions for Divergify properties, and frames the audience directly as ADHD and Autistic users without overpromising product capabilities.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": false,
+    "health_related_context": true,
+    "third_party_network": true,
+    "monetization_or_payments": true,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "Homepage copy is descriptive and keeps the non-diagnostic boundary intact.",
+      "evidence": [
+        "index.html states Divergify does not diagnose, treat, or replace professional care"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "No storage or tracking behavior changed, and the only off-site path is an explicit user-click link to the merch store.",
+      "evidence": [
+        "index.html contains a standard outbound Dopamine Depot link with no automatic data transfer path"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "The new homepage removes speculative product claims and keeps only factual, bounded statements.",
+      "evidence": [
+        "index.html now describes site sections and audience without promising outcomes"
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "Copy reduces cognitive load, removes marketing pressure, and uses shorter explanatory sections.",
+      "evidence": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-usability-inclusion/ notes that accessibility, usability, and inclusion work together",
+        "https://www.w3.org/WAI/make-it-clear/ recommends plain language and clear page purpose"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "Audience framing centers understanding, identity-respectful language, and low-friction entry points rather than correction or normalization.",
+      "evidence": [
+        "https://autistica.org.uk/what-is-autism/accessible-online-spaces describes the website as a virtual front door and stresses accessible, welcoming information",
+        "https://autisticadvocacy.org/about-asan/identity-first-language/ supports identity-first language for autistic people"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Primary benefit is that the homepage better matches the intended audience and avoids alienating copy drift.",
+      "evidence": [
+        "index.html restores protected tagline and removes the previous broader rewrite"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "The page now follows the source spec: tech-spec framing, blunt/calm tone, and no fixer language.",
+      "evidence": [
+        "branding/kit/THE NEUROSCHEMA (The Specs).docx says to speak tech specs, not pathology",
+        "index.html uses the protected tagline and a restrained humor line from the specs voice model"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "Homepage structure is simplified to a small number of scannable sections with text links instead of CTA buttons.",
+      "evidence": [
+        "index.html contains no homepage CTA button block",
+        "Section layout is shorter and more predictable than the replaced version"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "Static HTML-only change with no script or dependency changes.",
+      "evidence": [
+        "Only index.html changes in the product patch"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "pass",
+      "rationale": "Dopamine Depot is mentioned factually as the merch arm that funds the build, with no pressure tactics or gated conversion flow.",
+      "evidence": [
+        "index.html uses an inline text link rather than a conversion button"
+      ]
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship now and use this copy direction as the homepage baseline unless the user explicitly requests new text."
+  }
+}
