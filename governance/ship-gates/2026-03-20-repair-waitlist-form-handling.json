@@ -1,0 +1,101 @@
+{
+  "feature_id": "2026-03-20-repair-waitlist-form-handling",
+  "feature_name": "Repair waitlist form handling",
+  "owner": "Codex",
+  "date": "2026-03-20",
+  "scope_summary": "Restore the public waitlist form so submissions are detected by Netlify again, redirect to a real confirmation page, and stop the broken 404 flow after submit.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": true,
+    "health_related_context": true,
+    "third_party_network": true,
+    "monetization_or_payments": false,
+    "ai_processing": false
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "The change repairs an existing consented contact flow and does not expand the scope of data collection or claims.",
+      "evidence": [
+        "contact.html still requires explicit consent_to_process before submit",
+        "waitlist-success.html only confirms receipt and makes no new promises"
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "The website still only collects the same limited waitlist fields the user intentionally submits.",
+      "evidence": [
+        "contact.html fields remain name, email, what_is_needed, and consent_to_process",
+        "netlify.toml only re-enables HTML form detection for the existing public form"
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "The legal boundary text remains in place and the confirmation page adds no medical or clinical claims.",
+      "evidence": [
+        "contact.html warns users not to submit medical, insurance, or crisis information",
+        "waitlist-success.html contains only acknowledgement copy"
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "The repaired flow removes a dead-end failure state and replaces it with a clear confirmation step, reducing friction and uncertainty.",
+      "evidence": [
+        "waitlist-success.html provides a short confirmation and clear next links",
+        "The broken query-string thank-you state was removed from contact.html"
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "The new flow lowers cognitive load by giving one unambiguous outcome after submit instead of a confusing 404.",
+      "evidence": [
+        "waitlist-success.html uses short paragraphs and two clear navigation choices",
+        "No extra steps, popups, or manipulative retry patterns were added"
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users can now join the waitlist without hitting a broken page, which restores trust and reduces the chance of lost interest.",
+      "evidence": [
+        "Live browser submission now reaches /waitlist-success",
+        "Netlify now registers the waitlist form again"
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "The confirmation copy stays plain, direct, and non-hype.",
+      "evidence": [
+        "waitlist-success.html title and body are short and factual",
+        "No new benefit or outcome claims were introduced"
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "The form keeps native labels and controls, and the success page is simple to scan with keyboard-accessible links.",
+      "evidence": [
+        "contact.html preserves labeled inputs and checkbox",
+        "waitlist-success.html uses standard links and readable text blocks"
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "The fix is static-site configuration and HTML only, with no new secrets, privileged code, or backend added.",
+      "evidence": [
+        "netlify.toml enables existing HTML form detection",
+        "No auth, database, or server-side application code changed"
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "pass",
+      "rationale": "The repaired waitlist remains optional and does not pressure users into purchases or hidden signups.",
+      "evidence": [
+        "contact.html retains the same optional waitlist framing",
+        "waitlist-success.html offers clear exit paths back to the site"
+      ]
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ship now; separately verify whether form notification emails should be routed to chaoscontrol@divergify.app because that notification setting is not yet confirmed."
+  }
+}

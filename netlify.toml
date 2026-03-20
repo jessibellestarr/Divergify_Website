@@ -1,6 +1,9 @@
 [build]
   publish = "."
 
+  [build.processing]
+    ignore_html_forms = false
+
 [[redirects]]
   from = "/app/*"
   to = "/hub/beta/"

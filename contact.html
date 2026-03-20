@@ -7,19 +7,19 @@
       <meta name="description" content="Join the Divergify waitlist and share feedback about what would make the app more useful. Includes legal-safe boundaries and development-stage disclosures." />
 
   <!-- SEO-META:START -->
-  <link rel="canonical" href="https://divergify.app/contact.html" />
+  <link rel="canonical" href="https://divergify.app/contact" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta property="og:site_name" content="Divergify" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Waitlist + Feedback | Divergify" />
   <meta property="og:description" content="Join the Divergify waitlist and share feedback about what would make the app more useful. Includes legal-safe boundaries and development-stage disclosures." />
-  <meta property="og:url" content="https://divergify.app/contact.html" />
+  <meta property="og:url" content="https://divergify.app/contact" />
   <meta property="og:image" content="https://divergify.app/assets/brand/divergify-constellation-logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Waitlist + Feedback | Divergify" />
   <meta name="twitter:description" content="Join the Divergify waitlist and share feedback about what would make the app more useful. Includes legal-safe boundaries and development-stage disclosures." />
   <meta name="twitter:image" content="https://divergify.app/assets/brand/divergify-constellation-logo.png" />
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Waitlist + Feedback | Divergify", "description": "Join the Divergify waitlist and share feedback about what would make the app more useful. Includes legal-safe boundaries and development-stage disclosures.", "url": "https://divergify.app/contact.html", "isPartOf": {"@type": "WebSite", "name": "Divergify", "url": "https://divergify.app"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Waitlist + Feedback | Divergify", "description": "Join the Divergify waitlist and share feedback about what would make the app more useful. Includes legal-safe boundaries and development-stage disclosures.", "url": "https://divergify.app/contact", "isPartOf": {"@type": "WebSite", "name": "Divergify", "url": "https://divergify.app"}}</script>
   <!-- SEO-META:END -->
 <meta name="theme-color" content="#232147" />
   <link rel="icon" href="/favicon.ico">
@@ -52,9 +52,9 @@
       class="waitlist-form"
       name="waitlist"
       method="POST"
-      action="/contact.html?submitted=1"
+      action="/waitlist-success.html"
       data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="waitlist" />
       <p style="display:none;">
@@ -81,31 +81,11 @@
       <button class="button button-primary" type="submit">Join waitlist</button>
     </form>
 
-    <section id="waitlist-thanks" class="waitlist-thanks" aria-live="polite" hidden>
-      <h3>Thank you. You are on the list.</h3>
-      <p>If this email is already in the system, we do not send duplicate welcome messages.</p>
-      <p class="text-muted">You can still send updated feedback later from this same page.</p>
-    </section>
-
   </main>
 
   <div data-partial="footer"></div>
 
   <script src="/assets/divergipedia-data.js"></script>
   <script src="/assets/site.js"></script>
-  <script>
-    (function () {
-      var thanks = document.getElementById("waitlist-thanks");
-      if (!thanks) return;
-
-      var params = new URLSearchParams(window.location.search);
-      var submitted = params.get("submitted") === "1";
-
-      if (submitted) {
-        thanks.hidden = false;
-        window.history.replaceState({}, "", "/contact.html");
-      }
-    })();
-  </script>
 </body>
 </html>
