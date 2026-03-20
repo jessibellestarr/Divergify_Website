@@ -1,29 +1,18 @@
-# DIVERGIFY Website Rebuild
+# Divergify Website
 
-This folder contains a fresh scaffold for the site rebuild. Work is on a dedicated branch so we can iterate safely and push to GitHub when ready.
+This repo is the active website surface for Divergify and the current local repo linked to Netlify.
 
-## Branching
-- Primary working branch: `rebuild/site-refresh`
+Use this repo for:
 
-## Structure
-- `index.html` — minimal page with header and mode toggles
-- `assets/css/styles.css` — theme variables and layout
-- `assets/js/main.js` — toggle logic and persistence
+- live marketing pages
+- website content and supporting assets
+- any Netlify-linked website changes
 
-## Push to GitHub
-1) Add your remote (replace with your repo URL):
-   `git remote add origin https://github.com/OWNER/REPO.git`
-2) Push the working branch:
-   `git push -u origin rebuild/site-refresh`
+Do not use this repo for:
 
-If you prefer a different branch name, let me know and I’ll rename it before pushing.
+- app-shell development that belongs in `divergify-hub`
+- old drafts or deprecated site ideas
 
-## Ship filter (required)
+Canonical inventory:
 
-All product-surface changes must pass the ship filter before commit.
-
-- Policy: `governance/SHIP_FILTER.md`
-- Template: `governance/ship-gates/000-template.json`
-- Validator: `python3 scripts/verify_ship_filter.py`
-- Create a new gate file: `python3 scripts/new_ship_gate.py "Feature title"`
-- Enable local hooks once per clone: `bash scripts/setup-git-hooks.sh`
+- `/home/jessibelle/Divergify/ACTIVE_SURFACES.md`

@@ -4,6 +4,32 @@ body[data-field-notes="true"] {
   color: var(--color-text);
 }
 
+/* Many legacy field-note article pages never set data-field-notes-view="article". */
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) #article-title {
+  color: var(--color-text) !important;
+  text-wrap: balance;
+}
+
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) main > header h2,
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) main > header .text-sm.font-medium.text-gray-500 {
+  color: var(--color-text-muted) !important;
+}
+
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) main > header .border-gray-200 {
+  border-color: rgba(249, 238, 210, 0.22) !important;
+}
+
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) main > header .bg-white {
+  background: rgba(249, 238, 210, 0.94) !important;
+  color: #232147 !important;
+}
+
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) main > header .bg-white i,
+body[data-field-notes="true"]:not([data-field-notes-view="index"]) main > header .bg-white span {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
 body[data-field-notes="true"][data-field-notes-view="article"] .page-shell {
   max-width: 72ch;
   margin: 0 auto;

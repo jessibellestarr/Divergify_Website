@@ -1,8 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="120" fill="#00466C"/>
-  <path d="M120 270c40 70 90 104 136 104s96-34 136-104" fill="none" stroke="#6FAE86" stroke-width="28" stroke-linecap="round"/>
-  <circle cx="206" cy="210" r="16" fill="#ffffff"/>
-  <circle cx="306" cy="210" r="16" fill="#ffffff"/>
-  <path d="M196 176c18-22 38-32 60-32" fill="none" stroke="#d7e1ec" stroke-width="18" stroke-linecap="round"/>
-  <path d="M256 144c22 0 42 10 60 32" fill="none" stroke="#d7e1ec" stroke-width="18" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f2150" />
+      <stop offset="100%" stop-color="#121531" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="136" fill="url(#bg)" />
+  <g fill="none" stroke="#f3dfbf" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
+    <path d="M140 92L284 112" />
+    <path d="M284 112L360 200" />
+    <path d="M360 200L360 354" />
+    <path d="M360 354L284 442" />
+    <path d="M284 442L140 462" />
+    <path d="M140 462L154 256" />
+    <path d="M154 256L140 92" />
+    <path d="M154 256L284 112" />
+    <path d="M154 256L284 442" />
+  </g>
+  <g>
+    <circle cx="140" cy="92" r="28" fill="#e5c07d" />
+    <circle cx="284" cy="112" r="24" fill="#d4c7ff" />
+    <circle cx="360" cy="200" r="28" fill="#e5c07d" />
+    <circle cx="154" cy="256" r="24" fill="#d4c7ff" />
+    <circle cx="360" cy="354" r="28" fill="#e5c07d" />
+    <circle cx="284" cy="442" r="24" fill="#d4c7ff" />
+    <circle cx="140" cy="462" r="34" fill="#e5c07d" />
+  </g>
 </svg>

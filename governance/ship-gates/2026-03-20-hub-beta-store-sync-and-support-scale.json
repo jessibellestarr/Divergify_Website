@@ -1,0 +1,103 @@
+{
+  "feature_id": "2026-03-20-hub-beta-store-sync-and-support-scale",
+  "feature_name": "Hub beta store sync and support scale refresh",
+  "owner": "Divergify Team",
+  "date": "2026-03-20",
+  "scope_summary": "Refreshes the website-attached hub beta build with the current Divergify app code, updated support scale messaging, corrected brand assets, current privacy/support pages, and Play Store-ready screenshots and graphics.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": true,
+    "health_related_context": true,
+    "third_party_network": true,
+    "monetization_or_payments": false,
+    "ai_processing": true
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "Public privacy and contact surfaces remain present and the website-attached app build keeps non-medical productivity framing.",
+      "evidence": [
+        "privacy.html and contact.html remain part of the website update.",
+        "The attached hub beta build still exposes /legal/privacy and /legal/terms routes."
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "The synced app build remains local-first by default and preserves Tinfoil Hat for local-only sessions.",
+      "evidence": [
+        "Hub beta bundle includes current Tinfoil Hat copy and local-first privacy language.",
+        "Android release flow uses the hosted HTTPS backend only for optional assist calls, not silent background sync."
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "The release stays inside productivity support language and does not introduce diagnosis or treatment claims.",
+      "evidence": [
+        "Current in-app and website legal copy keeps the productivity-support disclaimer.",
+        "Support scale language describes pacing, task caps, nudges, and calmer presentation rather than medical effects."
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "The refreshed support scale reduces ambiguity and makes the adaptive behavior more legible instead of more coercive.",
+      "evidence": [
+        "Support now presents explicit baseline, medium, gentle, and high ranges.",
+        "Check-in UI explains the concrete behavior changes: sprint length, daily cap, nudge pace, and calmer defaults."
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "The update continues to adapt workload to self-reported capacity and avoids rigid all-or-nothing pacing.",
+      "evidence": [
+        "Support profile thresholds remain tied to user-reported stimulation value.",
+        "Higher-support states shorten focus windows and lower daily cap rather than forcing the same task load."
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users get a clearer explanation of what support does, and the website-attached build now reflects the real current app instead of stale or incorrect assets.",
+      "evidence": [
+        "Play screenshots were regenerated from the updated app state and current brand assets.",
+        "Website hub beta assets were rebuilt from the current app source before sync."
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "The synced build uses the approved constellation branding and direct, human support language without inflated claims.",
+      "evidence": [
+        "Current hub beta build includes the approved constellation mark and light wordmark assets.",
+        "Support copy now explains actual app behavior instead of abstract or AI-sounding language."
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "The support scale is easier to read and the attached build preserves reduced-motion and calmer-presentation controls.",
+      "evidence": [
+        "Settings page now lists every support tier with concrete differences.",
+        "High support still auto-enables calmer presentation, while manual Shades and reduced-motion controls remain available."
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "The website-attached bundle and current Android release were rebuilt from source and verified locally before this ship gate.",
+      "evidence": [
+        "npm test passed for the current app state.",
+        "npm run build passed for the current app state.",
+        "The Android release pipeline completed successfully after the support update.",
+        "scripts/build_app_into_site.sh rebuilt and copied the current dist into hub/beta."
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "pass",
+      "rationale": "This ship updates support behavior, store assets, and website-attached app content only; it does not add any monetization surface or manipulative conversion flow.",
+      "evidence": [
+        "No payment or subscription UI was added in the website sync.",
+        "No new paywall, upsell, or forced conversion prompts were introduced."
+      ]
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ready to commit and push for website sync, with final manual device checks still recommended before Play submission."
+  }
+}

@@ -95,30 +95,15 @@
   <script src="/assets/site.js"></script>
   <script>
     (function () {
-      var form = document.getElementById("waitlist-form");
       var thanks = document.getElementById("waitlist-thanks");
-      if (!form || !thanks) return;
+      if (!thanks) return;
 
       var params = new URLSearchParams(window.location.search);
       var submitted = params.get("submitted") === "1";
-      var alreadyJoined = false;
-      try {
-        alreadyJoined = window.localStorage.getItem("divergify_waitlist_joined") === "1";
-      } catch (error) {}
 
       if (submitted) {
-        try {
-          window.localStorage.setItem("divergify_waitlist_joined", "1");
-        } catch (error) {}
         thanks.hidden = false;
-        form.style.display = "none";
         window.history.replaceState({}, "", "/contact.html");
-        return;
-      }
-
-      if (alreadyJoined) {
-        thanks.hidden = false;
-        form.style.display = "none";
       }
     })();
   </script>

@@ -3,48 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#00466C" />
-    <meta name="description" content="Divergify app: local-first tasks, habits, focus, and sidekicks." />
-    <meta name="app-base" content="/" />
+    <meta name="theme-color" content="#17193f" />
+    <meta name="description" content="Divergify: adaptive task planning with local-first support, focus sessions, habits, and private guidance." />
+    <meta name="app-base" content="/hub/beta/" />
+    <link rel="icon" href="/hub/beta/icon.svg" />
+    <link rel="apple-touch-icon" href="/hub/beta/apple-touch-icon.png" />
     <title>Divergify</title>
-    <script type="module" crossorigin src="/assets/index-BVO4jfVM.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BDK_0QVe.css">
-  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+    <script type="module" crossorigin src="/hub/beta/assets/index-B6RpaDb6.js"></script>
+    <link rel="stylesheet" crossorigin href="/hub/beta/assets/index-BNG4Igvt.css">
+  <link rel="manifest" href="/hub/beta/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/hub/beta/registerSW.js"></script></head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div id="site-header" class="site-header">
-      <div class="site-shell">
-        <a class="site-brand" href="/">Divergify</a>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="/">Site Home</a>
-          <a href="/">App Home</a>
-          <a href="/tasks">Tasks</a>
-          <a href="/guide">Guide</a>
-          <a href="/settings">Settings</a>
-          <a href="/legal/privacy">Privacy</a>
-        </nav>
-      </div>
-    </div>
+    <form name="beta-feedback" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="beta-feedback" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" />
+      <input name="title" />
+      <input name="area" />
+      <input name="impact" />
+      <textarea name="message"></textarea>
+      <textarea name="steps"></textarea>
+      <textarea name="expected"></textarea>
+      <input name="contact_ok" />
+      <input name="founding_offer" />
+      <input name="app_url" />
+      <input name="user_agent" />
+      <input name="submitted_at" />
+    </form>
     <noscript>
       <main style="max-width: 980px; margin: 16px auto; padding: 16px; border: 1px solid #5e5c6b; border-radius: 16px;">
         <h1 style="margin: 0 0 8px;">Divergify Non-JS Mode</h1>
         <p style="margin: 0 0 12px;">
-          JavaScript is off, so the interactive app cannot run. You can still use this manual fallback:
+          JavaScript is off, so the interactive planner cannot run. Manual fallback:
         </p>
         <ol style="margin: 0; padding-left: 20px;">
-          <li>Write one tiny task and one tiny habit on paper.</li>
-          <li>Run one timer for 5-10 minutes.</li>
+          <li>Write one anchor task.</li>
+          <li>Set a 5-10 minute timer.</li>
           <li>When the timer ends, choose stop or one more sprint.</li>
         </ol>
-        <p style="margin: 12px 0 0;">Enable JavaScript to restore full sidekick, timer nudges, and personalization.</p>
+        <p style="margin: 12px 0 0;">Enable JavaScript to restore the full planner, focus, habits, and sidekicks.</p>
       </main>
     </noscript>
     <div id="root"></div>
-    <div id="site-footer" class="site-footer">
-      <div class="site-shell">
-        <div class="footer-meta">Productivity support only. Not medical advice.</div>
-      </div>
-    </div>
-    <script src="/js/universal-layout.js" defer></script>
   </body>
 </html>

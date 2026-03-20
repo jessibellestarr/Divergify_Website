@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Data Controls | Divergify</title>
-      <meta name="description" content="How Divergify handles local-first storage, optional integrations, and explicit consent controls." />
+      <meta name="description" content="How Divergify handles local-first storage, Tin Foil Hat mode, optional assist, and explicit consent controls." />
 
   <!-- SEO-META:START -->
   <link rel="canonical" href="https://divergify.app/data-controls.html" />
@@ -12,14 +12,14 @@
   <meta property="og:site_name" content="Divergify" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Data Controls | Divergify" />
-  <meta property="og:description" content="How Divergify handles local-first storage, optional integrations, and explicit consent controls." />
+  <meta property="og:description" content="How Divergify handles local-first storage, Tin Foil Hat mode, optional assist, and explicit consent controls." />
   <meta property="og:url" content="https://divergify.app/data-controls.html" />
   <meta property="og:image" content="https://divergify.app/assets/brand/divergify-constellation-logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Data Controls | Divergify" />
-  <meta name="twitter:description" content="How Divergify handles local-first storage, optional integrations, and explicit consent controls." />
+  <meta name="twitter:description" content="How Divergify handles local-first storage, Tin Foil Hat mode, optional assist, and explicit consent controls." />
   <meta name="twitter:image" content="https://divergify.app/assets/brand/divergify-constellation-logo.png" />
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Data Controls | Divergify", "description": "How Divergify handles local-first storage, optional integrations, and explicit consent controls.", "url": "https://divergify.app/data-controls.html", "isPartOf": {"@type": "WebSite", "name": "Divergify", "url": "https://divergify.app"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Data Controls | Divergify", "description": "How Divergify handles local-first storage, Tin Foil Hat mode, optional assist, and explicit consent controls.", "url": "https://divergify.app/data-controls.html", "isPartOf": {"@type": "WebSite", "name": "Divergify", "url": "https://divergify.app"}}</script>
   <!-- SEO-META:END -->
 <meta name="theme-color" content="#232147" />
   <link rel="icon" href="/favicon.ico">
@@ -38,48 +38,49 @@
     <h1>Data Controls</h1>
 
     <p>
-      Effective date: February 11, 2026. This page explains exactly where data lives, what requires explicit permission,
-      and what choices you control.
+      Effective date: March 18, 2026. This page explains exactly where data lives, what can leave your device in the
+      current release, and what choices you control.
     </p>
 
     <section class="section">
       <h2>Default behavior (local-first)</h2>
       <ul>
-        <li>Workspace state is stored on your device/browser.</li>
-        <li>Divergify does not silently upload task content or inferred health/cognitive patterns.</li>
+        <li>Workspace state is stored on your device or browser.</li>
+        <li>Divergify does not silently upload tasks, notes, habits, chat history, or settings.</li>
         <li>No ad-tracking cookies or cross-context behavioral advertising.</li>
+        <li>No automatic account sync or background backup in this release.</li>
       </ul>
     </section>
 
     <section class="section">
       <h2>What requires explicit permission</h2>
       <ul>
-        <li>Submitting contact messages (you explicitly provide and send this data).</li>
-        <li>Optional marketing opt-in (separate checkbox).</li>
-        <li>Opening third-party links (store, social, payment pages).</li>
-        <li>Any future cloud backup/sync or AI integration features.</li>
+        <li>Submitting the contact or waitlist form on the website.</li>
+        <li>Opening third-party links or integrations such as Google Calendar, Waze, email, or external web pages.</li>
+        <li>Triggering optional assist in Sidekicks, Magic Tasks, or Lab while Tin Foil Hat is off.</li>
+        <li>Exporting local data and choosing to share that file elsewhere.</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2>Cloud and sync model</h2>
+      <h2>Tin Foil Hat mode</h2>
       <p>
-        The intended architecture is user-controlled storage: you choose whether to stay local-only or connect your own
-        cloud provider. If enabled, sync should use end-to-end encrypted data blobs so providers cannot read workspace content.
+        Tin Foil Hat is the current privacy-first mode in the app. When it is on, optional assist calls are blocked and
+        embed-style content is hidden.
       </p>
       <p class="text-muted">
-        Until that feature is live, default behavior remains local-only.
+        Tin Foil Hat is a product control, not a promise of full operating-system or network-level blocking.
       </p>
     </section>
 
     <section class="section">
       <h2>AI data boundary</h2>
       <p>
-        AI features should be optional and separately consented. If enabled, only the minimum required payload should be sent
-        to the selected AI provider, and only for the session/use case you trigger.
+        Optional assist is user-triggered. When available and when you explicitly use it, Divergify sends only the
+        minimum text and context needed to respond to that specific request.
       </p>
       <p class="text-muted">
-        No AI processing should run on your data unless you explicitly turn it on.
+        If Tin Foil Hat is on, or if assist is unavailable, these flows fall back to local behavior.
       </p>
     </section>
 
@@ -95,20 +96,19 @@
     </section>
 
     <section class="section">
-      <h2>California + HIPAA quick answers</h2>
+      <h2>Permissions in the current Android app</h2>
       <ul>
-        <li>HIPAA usually applies to covered healthcare entities and their business associates, not general productivity tools.</li>
-        <li>California disclosures are structured for CalOPPA visibility and CCPA/CPRA-style rights handling where applicable.</li>
-        <li>California privacy rights requests can be submitted via <a href="mailto:chaoscontrol@divergify.app">chaoscontrol@divergify.app</a>.</li>
-        <li>Divergify does not sell personal information or use cross-context behavioral advertising.</li>
+        <li>The current Android manifest requests internet access only.</li>
+        <li>This release does not declare microphone, camera, or location permission.</li>
+        <li>Exports and external links happen only because you trigger them.</li>
       </ul>
     </section>
 
     <section class="section">
       <h2>Public web inference risk</h2>
       <p>
-        Public pages can still be indexed and observed at the network/browser level. That means third parties may infer topic
-        interest from visited URLs even when workspace data stays local.
+        Public pages can still be indexed and observed at the network or browser level. That means third parties may infer
+        topic interest from visited URLs even when workspace data stays local.
       </p>
       <p class="text-muted">
         We reduce this risk by avoiding ad trackers and keeping workspace content local by default.
@@ -118,9 +118,10 @@
     <section class="section">
       <h2>Your controls right now</h2>
       <ul>
-        <li>Clear browser storage to remove local workspace state and settings.</li>
-        <li>Use the “Shades,” “Tin Foil Hat,” and “Brain Mode” controls locally in your browser.</li>
-        <li>Use contact-form consent and opt-in checkboxes intentionally.</li>
+        <li>Clear browser or app storage to remove local workspace state and settings.</li>
+        <li>Use Shades, Low Stim, Tinfoil Hat, and support check-ins locally in the app.</li>
+        <li>Use contact-form consent intentionally before you submit website forms.</li>
+        <li>Export JSON only when you want a file outside the app.</li>
         <li>Email privacy requests to <a href="mailto:chaoscontrol@divergify.app">chaoscontrol@divergify.app</a>.</li>
       </ul>
     </section>
