@@ -1,0 +1,102 @@
+{
+  "feature_id": "2026-03-21-hub-beta-brain-dump-and-sidekick-refresh",
+  "feature_name": "Hub beta brain dump and sidekick refresh",
+  "owner": "Divergify Team",
+  "date": "2026-03-21",
+  "scope_summary": "Refreshes the website-attached hub beta build with the rebuilt brain dump capture flow, sharper sidekick voice layers, smaller toggle-style controls, and clearer onboarding labels so the hosted app matches the current product direction.",
+  "risk_level": "medium",
+  "touches": {
+    "user_data": true,
+    "health_related_context": true,
+    "third_party_network": true,
+    "monetization_or_payments": false,
+    "ai_processing": true
+  },
+  "filters": {
+    "legal_and_regulatory": {
+      "status": "pass",
+      "rationale": "The synced beta build keeps the same public privacy and support routes and stays inside productivity-support language without adding new legal claims.",
+      "evidence": [
+        "The hosted bundle still exposes legal/privacy and support flows.",
+        "No new medical, diagnostic, or treatment claims were added in the refreshed app build."
+      ]
+    },
+    "privacy_local_first_promise": {
+      "status": "pass",
+      "rationale": "The refreshed build still supports a local-only session path through Tinfoil Hat and local sorting fallback when cloud assist is unavailable.",
+      "evidence": [
+        "Brain dump now falls back to local sorting when assist is blocked or unavailable.",
+        "Tinfoil Hat copy remains present and still blocks cloud assist behavior."
+      ]
+    },
+    "medical_scope_and_claims": {
+      "status": "pass",
+      "rationale": "The update changes wording, interaction design, and sorting behavior only; it does not introduce medical claims or therapeutic promises.",
+      "evidence": [
+        "Sidekick prompt layers keep the existing non-medical boundary language.",
+        "Onboarding and planner copy remain framed as productivity support."
+      ]
+    },
+    "behavioral_science_alignment": {
+      "status": "pass",
+      "rationale": "The brain dump update lowers cognitive load by allowing raw capture before sorting, and the sidekick changes make prompts more actionable without increasing pressure.",
+      "evidence": [
+        "Brain dump now starts with type-or-talk capture and then sorts into now, later, and notes.",
+        "Takota and the other sidekicks now use clearer behavioral overlays with one-next-step constraints."
+      ]
+    },
+    "neurodivergence_research_alignment": {
+      "status": "pass",
+      "rationale": "The refresh better matches neurodivergent-friendly workflows by reducing translation work, supporting voice capture, and preserving adjustable support pacing.",
+      "evidence": [
+        "Brain dump now accepts spoken or typed messy input before cleanup.",
+        "Support-level logic and sidekick fallback behavior were preserved while voice layers were sharpened."
+      ]
+    },
+    "user_benefit_and_harm_check": {
+      "status": "pass",
+      "rationale": "Users get a clearer capture tool and more distinct sidekick behavior, with lower risk of confusion from stale onboarding labels or oversized state controls.",
+      "evidence": [
+        "Onboarding now uses step-specific labels instead of a generic onboarding badge.",
+        "Top-level state controls were converted to smaller toggle-style controls."
+      ]
+    },
+    "brand_voice_and_claims": {
+      "status": "pass",
+      "rationale": "The refresh keeps the current brand look while making the sidekick voice more human, more specific, and less generic.",
+      "evidence": [
+        "Sidekicks now have explicit prompt overlays and starter prompts.",
+        "Takota local fallback copy was sharpened to better match the intended dry, smart voice."
+      ]
+    },
+    "accessibility_and_inclusion": {
+      "status": "pass",
+      "rationale": "The new brain dump flow adds a clearer primary action, preserves typed input, and keeps the interface usable even when speech recognition is unavailable.",
+      "evidence": [
+        "The capture flow keeps a large text area as the primary path.",
+        "Voice capture is additive, not required, and typed sorting remains available."
+      ]
+    },
+    "security_and_reliability": {
+      "status": "pass",
+      "rationale": "The synced build was rebuilt from source, local sorter behavior is covered by tests, and the hosted beta bundle was regenerated directly from the app repository.",
+      "evidence": [
+        "npm run build passed for the current app state.",
+        "npm test passed for the current app state, including the new brain dump sorter test.",
+        "scripts/build_app_into_site.sh rebuilt and copied the current app dist into hub/beta."
+      ]
+    },
+    "monetization_and_dark_pattern_check": {
+      "status": "pass",
+      "rationale": "This refresh does not add any payment, subscription, or manipulative engagement mechanics.",
+      "evidence": [
+        "No monetization surface changed in the synced beta build.",
+        "The update focused on clarity, capture flow, and persona consistency only."
+      ]
+    }
+  },
+  "ship_decision": {
+    "ready": true,
+    "conditions": "Ready to commit and push for the website beta sync. Real-device microphone behavior should still be verified on Android before store submission."
+  }
+}
